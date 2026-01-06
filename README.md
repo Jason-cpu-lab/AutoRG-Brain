@@ -1,7 +1,7 @@
 <!-- <h1><img src="figure/logo.png" alt="logo" style="height:65px; vertical-align: middle;margin-bottom: -10px;"> RaTEScore</h1> -->
 <h1> AutoRG-Brain</h1>
 
-The official codes for "AutoRG-Brain: Grounded Report Generation for Brain MRI".
+The official codes for "Interpretable Brain MRI Report Generation Anchored by Lesion Topography" published in IEEE Journal of Biomedical and Health Informatics (J-BHI).
 
 <div style='display:flex; gap: 0.25rem; '>
 <!-- <a href='https://angelakeke.github.io/RaTEScore/'><img src='https://img.shields.io/badge/website-URL-blueviolet'></a> -->
