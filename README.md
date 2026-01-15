@@ -1,6 +1,21 @@
 <!-- <h1><img src="figure/logo.png" alt="logo" style="height:65px; vertical-align: middle;margin-bottom: -10px;"> RaTEScore</h1> -->
 <h1> AutoRG-Brain</h1>
 
+# AutoRG-Brain (Fork & Re-implementation)
+
+This repository is a fork of [AutoRG-Brain](https://github.com/ljy19970415/AutoRG-Brain) by ljy19970415.  
+It is part of my final year project at [Your University Name].
+
+### My Contributions
+- Re-implemented core modules to deepen understanding of the architecture
+- Added experiments on new datasets
+- Improved documentation and reproducibility
+- Explored potential extensions for clinical applications
+
+All credit for the original implementation goes to the authors of AutoRG-Brain.  
+This fork is licensed under the same MIT License as the original project.
+
+
 The official codes for "Interpretable Brain MRI Report Generation Anchored by Lesion Topography" published in IEEE Journal of Biomedical and Health Informatics (J-BHI).
 
 <div style='display:flex; gap: 0.25rem; '>
