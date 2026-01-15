@@ -1,0 +1,10 @@
+[
+    {
+        "image": [
+            "../../../../data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_t1.nii.gz"
+        ],
+        "pred_report": "There is an irregular abnormal signal focus in the right frontal lobe on T1-weighted imaging. The lesion measures approximately 46*88*65mm. There is no evidence of midline shift or other structural changes. In the left frontal lobe, an irregular abnormal signal focus with low signal intensity is observed on T1-weighted images, indicating a lack of suitable vascularity or intracellular edema.  ",
+        "ab_mask": "../../../../data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_seg.nii.gz",
+        "ana_mask": "./BraTS2021_00000_t1_ana.nii.gz"
+    }
+]

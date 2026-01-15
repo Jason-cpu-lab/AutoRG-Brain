@@ -1,0 +1,27 @@
+[
+    {
+      "image": "/data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_flair.nii.gz",
+      "modal": "T2FLAIR",
+      "label": "/data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_seg.nii.gz"
+    },
+    {
+      "image": "/data/cwang/mri_data/BraTS2021/BraTS2021_00002/BraTS2021_00002_flair.nii.gz",
+      "modal": "T2FLAIR",
+      "label": "/data/cwang/mri_data/BraTS2021/BraTS2021_00002/BraTS2021_00002_seg.nii.gz"
+    },
+    {
+      "image": "/data/cwang/mri_data/BraTS2021/BraTS2021_00003/BraTS2021_00003_flair.nii.gz",
+      "modal": "T2FLAIR",
+      "label": "/data/cwang/mri_data/BraTS2021/BraTS2021_00003/BraTS2021_00003_seg.nii.gz"
+    },
+    {
+      "image": "/data/cwang/mri_data/BraTS2021/BraTS2021_00005/BraTS2021_00005_flair.nii.gz",
+      "modal": "T2FLAIR",
+      "label": "/data/cwang/mri_data/BraTS2021/BraTS2021_00005/BraTS2021_00005_seg.nii.gz"
+    },
+    {
+      "image": "/data/cwang/mri_data/BraTS2021/BraTS2021_00006/BraTS2021_00006_flair.nii.gz",
+      "modal": "T2FLAIR",
+      "label": "/data/cwang/mri_data/BraTS2021/BraTS2021_00006/BraTS2021_00006_seg.nii.gz"
+    }
+  ]

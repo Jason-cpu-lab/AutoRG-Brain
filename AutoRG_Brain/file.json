@@ -1,0 +1,8 @@
+[
+    
+    {
+        "image": "../../../../data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_t1.nii.gz",
+        "modal": "T1WI",
+        "label": "../../../../data/cwang/mri_data/BraTS2021/BraTS2021_00000/BraTS2021_00000_seg.nii.gz"
+    }
+]
