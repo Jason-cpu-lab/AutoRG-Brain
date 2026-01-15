@@ -1,7 +1,7 @@
 # AutoRG-Brain (Fork & Re-implementation)
 
 This repository is a fork of [AutoRG-Brain](https://github.com/ljy19970415/AutoRG-Brain) by ljy19970415.  
-It is part of my final year project at [Your University Name].
+It is my final year project at The Chinese University of Hong Kong.
 
 ### My Contributions
 - Re-implemented core modules to deepen understanding of the architecture
