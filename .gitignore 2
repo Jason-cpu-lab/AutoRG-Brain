@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs / outputs / temp
+nohup.out
+output.log
+preprocessing.log
+pred_report.json
+
+# Large data / models / binary artifacts
+*.nii
+*.nii.gz
+*.so
+*.dylib
+fold_0/
+raw_data/
+assets/
+AutoRG_Brain/augmentation/resources/
+petrel_client/**/libs/

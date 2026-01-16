@@ -1,0 +1,44 @@
+nohup: ignoring input
+Available tasks: ['Task001_seg_test', 'Task001_seg_test']
+> [0;32m/home/chengwang/AutoRG-Brain/AutoRG_Brain/experiment_planning/nnUNet_plan_and_preprocess_llm.py[0m(102)[0;36mmain[0;34m()[0m
+[0;32m    101 [0;31m[0;34m[0m[0m
+[0m[0;32m--> 102 [0;31m        [0mcrop[0m[0;34m([0m[0mtask_name[0m[0;34m,[0m [0;32mFalse[0m[0;34m,[0m [0mtf[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    103 [0;31m[0;34m[0m[0m
+[0m
+ipdb> Traceback (most recent call last):
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/chengwang/AutoRG-Brain/AutoRG_Brain/experiment_planning/nnUNet_plan_and_preprocess_llm.py", line 140, in <module>
+    main()
+  File "/home/chengwang/AutoRG-Brain/AutoRG_Brain/experiment_planning/nnUNet_plan_and_preprocess_llm.py", line 102, in main
+    crop(task_name, False, tf)
+  File "/home/chengwang/AutoRG-Brain/AutoRG_Brain/experiment_planning/nnUNet_plan_and_preprocess_llm.py", line 102, in main
+    crop(task_name, False, tf)
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/bdb.py", line 90, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/bdb.py", line 114, in dispatch_line
+    self.user_line(frame)
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/pdb.py", line 253, in user_line
+    self.interaction(frame, None)
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/site-packages/IPython/core/debugger.py", line 464, in interaction
+    OldPdb.interaction(self, frame, tb)
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/pdb.py", line 348, in interaction
+    self._cmdloop()
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/pdb.py", line 313, in _cmdloop
+    self.cmdloop()
+  File "/home/chengwang/miniconda3/envs/autorg/lib/python3.10/cmd.py", line 126, in cmdloop
+    line = input(self.prompt)
+OSError: [Errno 9] Bad file descriptor
+
+If you suspect this is an IPython 8.37.0 bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
