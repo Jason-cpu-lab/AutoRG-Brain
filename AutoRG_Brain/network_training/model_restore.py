@@ -96,7 +96,7 @@ def load_model_and_checkpoint_files(folder, mixed_precision=None, checkpoint_nam
     trainer.initialize(False)
     all_best_model_files = [join(folder, "%s.model" % checkpoint_name)]
     print("using the following model files: ", all_best_model_files)
-    all_params = [torch.load(i, map_location=torch.device('cpu')) for i in all_best_model_files]
+    all_params = [torch.load(i, map_location=torch.device('cpu'), weights_only=False) for i in all_best_model_files]
     return trainer, all_params
 
 def load_model_and_checkpoint_files_llm(folder, mixed_precision=None, checkpoint_name="model_best"):
@@ -109,7 +109,7 @@ def load_model_and_checkpoint_files_llm(folder, mixed_precision=None, checkpoint
 
     all_best_model_files = [join(folder, "%s.model" % checkpoint_name)]
     print("using the following model files: ", all_best_model_files)
-    all_params = [torch.load(i, map_location=torch.device('cpu')) for i in all_best_model_files]
+    all_params = [torch.load(i, map_location=torch.device('cpu'), weights_only=False) for i in all_best_model_files]
     return trainer, all_params
 
 def restore_model_llm(pkl_file, checkpoint=None, train=False, fp16=None):

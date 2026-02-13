@@ -325,7 +325,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.was_initialized = True
     
     def get_tokenizer(self):
-        checkpoint = "healx/gpt-2-pubmed-medium"
+        checkpoint = "/home/jason/models/healx-gpt-2-pubmed-medium"
         tokenizer = GPT2Tokenizer.from_pretrained(checkpoint)
         tokenizer.pad_token = tokenizer.eos_token
 
