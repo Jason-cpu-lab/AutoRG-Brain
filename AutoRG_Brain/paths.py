@@ -30,13 +30,13 @@ PLEASE READ paths.md FOR INFORMATION TO HOW TO SET THIS UP
 # preprocessing_output_dir = os.environ['nnUNet_preprocessed'] if "nnUNet_preprocessed" in os.environ.keys() else None
 # network_training_output_dir_base = os.path.join(os.environ['RESULTS_FOLDER']) if "RESULTS_FOLDER" in os.environ.keys() else None
 
-base = '../raw_data'
-preprocessing_output_dir = '../preprocessed_data'
+base = '/home/jason/autorg/AutoRG-Brain/raw_data'
+preprocessing_output_dir = '/home/jason/autorg/AutoRG-Brain/preprocessed_data'
 network_training_output_dir_base = '../trained_model_output'
 
 #### bucket path If you use storage like aws s3 ####
-preprocessing_output_dir_bucket = 's3://path//to//store//preprocessed_files'
-nnUNet_cropped_data_bucket = 's3://path//to//store//cropped_files'
+preprocessing_output_dir_bucket = ''
+nnUNet_cropped_data_bucket = ''
 
 if base is not None:
     nnUNet_raw_data = join(base, "nnUNet_raw_data")

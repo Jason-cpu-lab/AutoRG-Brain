@@ -12,10 +12,11 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 
 # Define BraTS2020 data directory and output paths
 brats_dir = Path('/home/jason/dataset/BraTS2020_TrainingData/MICCAI_BraTS2020_TrainingData')
+inference_dir = Path('/home/jason/inference_output')
 
 
-# Output paths (use Task001_seg_test as requested)
-output_dir = PROJECT_ROOT / 'raw_data' / 'Task001_seg_test'
+# Output paths
+output_dir = PROJECT_ROOT / 'raw_data' / 'nnUNet_raw_data' / 'Task001_seg_test'
 case_dic_path = output_dir / 'case_dic.json'
 dataset_path = output_dir / 'dataset.json'
 test_file_path = output_dir / 'test_file.json'
@@ -29,14 +30,15 @@ MODALITIES = ["flair"]
 case_dic = {"flair": []}
 
 # Initialize dataset structure
-# Note: this codebase often treats images as single-modality inputs and uses an extra per-sample "modal" field.
+# Note: this codebase treats images as single-modality inputs and uses an extra per-sample "modal" field.
+# label1 = anatomy mask, label2 = abnormality/lesion mask
 dataset = {
     "description": "BraTS2020 Brain Tumor Segmentation Dataset",
     "labels": {
         "0": "background",
-        "1": "NCR/NET",
-        "2": "ED",
-        "4": "ET"
+        "1": "1",
+        "2": "2",
+        "4": "4"
     },
     "modality": {
         "0": "MRI"
@@ -44,8 +46,8 @@ dataset = {
     "name": "BraTS2020_Segmentation",
     "numTest": 0,
     "numTraining": 0,
-    "reference": "https://www.med.upenn.edu/cbica/brats2020/data.html",
-    "release": "1.0",
+    "reference": "no",
+    "release": "0.0",
     "tensorImageSize": "4D",
     "test": [],
     "training": []
@@ -135,11 +137,17 @@ def main():
         case_folder = brats_dir / case_id
         img_path = case_folder / f"{case_id}_flair.nii"
         seg_path = case_folder / f"{case_id}_seg.nii"
+        ana_path = inference_dir / f"{case_id}_flair_ana.nii.gz"
+
+        # Only include cases where the anatomy mask exists in inference_output
+        if not ana_path.exists():
+            continue
 
         entry = {
             "image": str(img_path),
-            "label": str(seg_path),
-            "modal": "flair"
+            "label1": str(ana_path),
+            "label2": str(seg_path),
+            "modal": "T2FLAIR"
         }
 
         if img_path.exists() and seg_path.exists():

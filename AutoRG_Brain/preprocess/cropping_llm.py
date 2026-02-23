@@ -58,7 +58,30 @@ def get_case_identifier(case):
     #     case_identifier = case[1].split("/")[-1].split(".nii.gz")[0][:-5]
     # else:
     #     case_identifier = case[1].split("/")[-1].split(".nii.gz")[0]
-    case_identifier = case[1].split("/")[-1].split(".nii.gz")[0][:-9]
+    #case_identifier = case[1].split("/")[-1].split(".nii.gz")[0][:-9]
+
+    """
+    Extract case identifier from the label1 path (case[1]).
+    
+    Input case structure: [image_path, label1_path, label2_path]
+    Example label1_path: /home/jason/inference_output/BraTS20_Training_001_flair_ana.nii.gz
+    Expected output: BraTS20_Training_001_flair
+    """
+    # Get the filename from label1 path (case[1])
+    filename = case[1].split("/")[-1]  # "BraTS20_Training_001_flair_ana.nii.gz"
+    
+    # Remove .nii.gz extension (or .nii)
+    if filename.endswith('.nii.gz'):
+        filename = filename[:-7]  # "BraTS20_Training_001_flair_ana"
+    elif filename.endswith('.nii'):
+        filename = filename[:-4]  # "BraTS20_Training_001_flair_ana"
+    
+    # Remove only the _ana suffix, keep modality
+    if filename.endswith('_ana'):
+        case_identifier = filename[:-4]  # Remove last 4 characters: "_ana"
+    else:
+        case_identifier = filename
+    
     return case_identifier
 
 
