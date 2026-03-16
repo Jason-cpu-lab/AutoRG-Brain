@@ -104,6 +104,8 @@ def main():
     parser.add_argument("--anatomy_reverse", required=False, default=False, action="store_true")
 
     parser.add_argument("--bucket", help="whether the data is stored on s3", action="store_true")
+    parser.add_argument("--no_resume", required=False, default=False, action="store_true",
+                        help="start training from scratch and do not load model_latest/model_final checkpoint")
 
     args = parser.parse_args()
 
@@ -185,8 +187,11 @@ def main():
                 # we start a new training. If pretrained_weights are set, use them
                 load_pretrained_weights_allow_missing(trainer.network, args.pretrained_weights)
             
-            print("load latest checkpoint")
-            trainer.load_latest_checkpoint()
+            if args.no_resume:
+                print("skip loading latest checkpoint (--no_resume set)")
+            else:
+                print("load latest checkpoint")
+                trainer.load_latest_checkpoint()
 
             trainer.run_training()
         else:

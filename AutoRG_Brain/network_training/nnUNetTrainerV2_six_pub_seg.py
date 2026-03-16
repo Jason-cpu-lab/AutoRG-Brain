@@ -58,7 +58,16 @@ from loss.dice_loss import DC_and_CE_loss
 from lr.poly_lr import poly_lr
 
 # dataloader
-from dataset.dataset_loading import load_dataset, DataLoader3D, unpack_dataset
+
+####--old code--####
+#from dataset.dataset_loading import load_dataset, DataLoader3D, unpack_dataset
+####--old code--####
+
+####--new code--####
+from dataset.dataset_loading import DataLoader3D
+from dataset.dataset_loading_llm import load_dataset, unpack_dataset
+####--new code--####
+
 from dataset.dataset_loading_bucket import load_dataset_bucket, DataLoader3D_bucket, unpack_dataset_bucket, load_from_bucket
 
 # utils
@@ -104,6 +113,17 @@ class nnUNetTrainerV2(nnUNetTrainer):
 
         self.train_file = json.load(open(train_file,'r')) if train_file is not None else None
         self.test_file = self.train_file['validation'] if train_file is not None else None
+
+        self.all_val_eval_metrics_ana = {'test': []}
+        self.all_train_eval_metrics_ana = []
+        self.all_val_eval_metrics_ab = {'test': []}
+        self.all_train_eval_metrics_ab = []
+        self.val_eval_criterion_MA_ana = {'test': None}
+        self.val_eval_criterion_MA_ab = {'test': None}
+        self.val_eval_criterion_MA = {'ab':None,'ana':None,'both':None}
+        self.best_val_eval_criterion_MA_ana = {'test': None}
+        self.best_val_eval_criterion_MA_ab = {'test': None}
+        self.best_val_eval_criterion_MA = {'ab':None,'ana':None,'both':None}
         
         if self.test_file is not None:
             # self.all_val_eval_metrics_ana = {'SIX':[],'ATLAS':[],'WMH':[],'GLI':[],'SSA':[],'PED':[],'MEN':[],'MET':[],'ISLES':[]}
@@ -131,8 +151,8 @@ class nnUNetTrainerV2(nnUNetTrainer):
 
         self.pin_memory = True
 
-        # self.batch_size = 1 ## for debug if you have a small dataset
-        self.batch_size = 8
+        # default fallback; will be aligned to stage plans in initialize
+        self.batch_size = 2
 
         self.client = None
         self.dataset_directory_bucket = dataset_directory_bucket
@@ -208,6 +228,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
                 self.load_plans_file()
 
             self.process_plans(self.plans)
+            self.batch_size = self.plans['plans_per_stage'][self.stage].get('batch_size', self.batch_size)
 
             self.setup_DA_params()
 

@@ -197,7 +197,38 @@ class DataLoader3D(SlimDataLoaderBase):
         self.patch_size = patch_size
         # list_of_keys = list(self._data.keys()) # self._data = data
         self.list_of_keys = list(self._data.keys()) # self._data = data
-        self.list_of_keys_modal = {'a':list(filter(lambda x:x.startswith('a'),self.list_of_keys)),'b':list(filter(lambda x:x.startswith('b'),self.list_of_keys)),'c':list(filter(lambda x:x.startswith('c'), self.list_of_keys)),'d':list(filter(lambda x:x.startswith('d'), self.list_of_keys))}
+        def _modal_key(k):
+            kl = k.lower()
+            if kl.endswith('_dwi'):
+                return 'a'
+            elif kl.endswith('_t1wi') or kl.endswith('_t1ce') or kl.endswith('_t1'):
+                return 'b'
+            elif kl.endswith('_t2wi') or kl.endswith('_t2'):
+                return 'c'
+            elif kl.endswith('_flair') or kl.endswith('_t2flair'):
+                return 'd'
+            elif kl.startswith('a'):
+                return 'a'
+            elif kl.startswith('b'):
+                return 'b'
+            elif kl.startswith('c'):
+                return 'c'
+            elif kl.startswith('d'):
+                return 'd'
+            else:
+                return None
+        self.list_of_keys_modal = {'a': [], 'b': [], 'c': [], 'd': []}
+        for k in self.list_of_keys:
+            mk = _modal_key(k)
+            if mk is not None:
+                self.list_of_keys_modal[mk].append(k)
+        unmatched_keys = [k for k in self.list_of_keys if _modal_key(k) is None]
+        print(f"[DataLoader3D] modal buckets: a={len(self.list_of_keys_modal['a'])}, "
+              f"b={len(self.list_of_keys_modal['b'])}, c={len(self.list_of_keys_modal['c'])}, "
+              f"d={len(self.list_of_keys_modal['d'])}, total={len(self.list_of_keys)}")
+        if unmatched_keys:
+            print(f"[DataLoader3D] WARNING: {len(unmatched_keys)} keys did not match modal rules. "
+                  f"Example: {unmatched_keys[:10]}")
 
         # need_to_pad denotes by how much we need to pad the data so that if we sample a patch of size final_patch_size
         # (which is what the network will get) these patches will also cover the border of the patients
@@ -230,7 +261,7 @@ class DataLoader3D(SlimDataLoaderBase):
         else:
             case_all_data = np.load(self._data[k]['data_file'])['data']
         num_color_channels = case_all_data.shape[0] - 1
-        data_shape = (self.batch_size, num_color_channels, *self.patch_size)
+        data_shape = (self.batch_size, 1, *self.patch_size)
         seg_shape = (self.batch_size, num_seg, *self.patch_size)
         return data_shape, seg_shape
     
@@ -242,10 +273,12 @@ class DataLoader3D(SlimDataLoaderBase):
 
     def generate_train_batch(self):
 
-        if self.list_of_keys[0][3]!='_':
-            # six training
-            choose_modal = np.random.choice(['a','b','c','d'], p=[0.25,0.25,0.25,0.25])
-            selected_keys = np.random.choice(self.list_of_keys_modal[choose_modal], self.batch_size, True, None) # pick batch_size samples，samples may repeat
+        available_modals = [m for m in ['a','b','c','d'] if len(self.list_of_keys_modal[m]) > 0]
+        if len(available_modals) > 1 or (len(available_modals) == 1 and self.list_of_keys[0][3]!='_'):
+            # six training (multi-modal or suffix-based single modal)
+            p = np.array([1.0 / len(available_modals)] * len(available_modals))
+            choose_modal = np.random.choice(available_modals, p=p)
+            selected_keys = np.random.choice(self.list_of_keys_modal[choose_modal], self.batch_size, True, None) # pick batch_size samples, samples may repeat
             modal = self.modal_dic[choose_modal]
         else:
             # hammer training (finetune or from scratch)
@@ -433,7 +466,7 @@ class DataLoader3D(SlimDataLoaderBase):
                                           valid_bbox_y_lb:valid_bbox_y_ub,
                                           valid_bbox_z_lb:valid_bbox_z_ub]
 
-            data[j] = np.pad(case_all_data[:-1], ((0, 0),
+            data[j] = np.pad(case_all_data[:1], ((0, 0),
                                                   (-min(0, bbox_x_lb), max(bbox_x_ub - shape[0], 0)),
                                                   (-min(0, bbox_y_lb), max(bbox_y_ub - shape[1], 0)),
                                                   (-min(0, bbox_z_lb), max(bbox_z_ub - shape[2], 0))),
