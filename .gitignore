@@ -6,3 +6,4 @@ __pycache__/
 *$py.class
 preprocessed_data/
 raw_data/nnUNet_cropped_data/
+trained_model_output/
