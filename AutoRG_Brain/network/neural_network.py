@@ -22,7 +22,7 @@ import torch
 from scipy.ndimage.filters import gaussian_filter
 from typing import Union, Tuple, List
 
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 from utilities.random_stuff import no_op
 
 from batchgenerators.utilities.file_and_folder_operations import *
@@ -136,7 +136,7 @@ class SegmentationNetwork(NeuralNetwork):
         assert len(x.shape) == 4, "data must have shape (c,x,y,z)"
 
         if mixed_precision:
-            context = autocast
+            context = lambda: autocast(device_type='cuda')
         else:
             context = no_op
 
@@ -225,7 +225,7 @@ class SegmentationNetwork(NeuralNetwork):
         assert len(x.shape) == 3, "data must have shape (c,x,y)"
 
         if mixed_precision:
-            context = autocast
+            context = lambda: autocast(device_type='cuda')
         else:
             context = no_op
 

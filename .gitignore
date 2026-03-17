@@ -7,3 +7,4 @@ __pycache__/
 preprocessed_data/
 raw_data/nnUNet_cropped_data/
 trained_model_output/
+inference_output/

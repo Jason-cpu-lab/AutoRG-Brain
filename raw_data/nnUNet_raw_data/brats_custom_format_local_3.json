@@ -1,0 +1,14 @@
+[
+  {
+    "image": "/home/jason/autorg/dataset/BraTS2020_TrainingData/MICCAI_BraTS2020_TrainingData/BraTS20_Training_001/BraTS20_Training_001_flair.nii",
+    "modal": "T2FLAIR"
+  },
+  {
+    "image": "/home/jason/autorg/dataset/BraTS2020_TrainingData/MICCAI_BraTS2020_TrainingData/BraTS20_Training_002/BraTS20_Training_002_flair.nii",
+    "modal": "T2FLAIR"
+  },
+  {
+    "image": "/home/jason/autorg/dataset/BraTS2020_TrainingData/MICCAI_BraTS2020_TrainingData/BraTS20_Training_003/BraTS20_Training_003_flair.nii",
+    "modal": "T2FLAIR"
+  }
+]

@@ -5,8 +5,30 @@ This document explains:
 2. How to run training.
 3. How to run inference.
 4. Common errors and how to fix them.
+5. March 2026 bug/warning fixes for `test_seg.py` inference.
 
 The goal is to use a MedSAM2-based segmentation backbone **without changing AutoRG-Brain pipeline flow**.
+
+---
+
+## 0) March 2026 updates (important)
+
+The inference/evaluation path was updated to fix warnings and a metric bug:
+
+- ✅ AMP deprecation fixes:
+  - migrated from `torch.cuda.amp` to `torch.amp`
+  - updated both trainer and inference autocast/gradscaler usage
+- ✅ Old-checkpoint warning noise reduced:
+  - `self.epoch != len(self.all_tr_losses)` warning is now training-only
+  - inference no longer prints this warning repeatedly
+- ✅ Metric return bug fixed:
+  - `inference/predict.py` no longer always returns `0`
+  - returns real average Dice when labels exist
+- ✅ Clearer output for unlabeled test JSON:
+  - if your test JSON has no `label` field, output is now:
+    - `avg metric not computed (no ground-truth labels in test file)`
+
+If you still see `avg metric 0` from older logs, that was pre-fix behavior.
 
 ---
 
@@ -113,7 +135,7 @@ python train_seg.py 3d_fullres nnUNetTrainerV2 001 0 \
   --abnormal_type intense \
   -train_batch 1 \
   -val_batch 1 \
-  -train nnUNet_raw_data/Task001_seg_test/test_file.json \
+  -train /home/jason/autorg/AutoRG-Brain/raw_data/nnUNet_raw_data/Task001_seg_test/test_file.json \
   --no_resume
 ```
 
@@ -137,9 +159,9 @@ cd /home/jason/autorg/AutoRG-Brain/AutoRG_Brain
 python test_seg.py \
   -o /home/jason/autorg/AutoRG-Brain/inference_output/medsam2_run \
   -model_folder /home/jason/autorg/AutoRG-Brain/trained_model_output/nnUNet/3d_fullres/Task001_seg_test/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0 \
-  -chk AutoRG_Brain_SEG \
-  -test /home/jason/autorg/AutoRG-Brain/AutoRG_Brain/nnUNet_raw_data/Task001_seg_test/test_file.json \
-  --modal MRI \
+  -chk model_best_ab \
+  -test /home/jason/autorg/AutoRG-Brain/raw_data/nnUNet_raw_data/brats_custom_format_local_3.json \
+  --modal T2FLAIR \
   --dice_type abnormal \
   --save_output_nii
 ```
@@ -148,6 +170,11 @@ python test_seg.py \
 - `--modal` is required by `test_seg.py`.
 - `--dice_type` can be `abnormal` or `anatomy` depending on what you evaluate.
 - Keep MedSAM2 environment variables exported during inference as well.
+- `test_seg.py` expects a **list-style** JSON (`[{"image": ..., "modal": ...}, ...]`).
+- To compute Dice/NSD/HD metrics, each item must also include `"label"`.
+- If `"label"` is missing, segmentation still runs and NIfTI outputs are saved, but aggregate metric is intentionally not computed.
+- `/home/jason/autorg/AutoRG-Brain/raw_data/nnUNet_raw_data/Task001_seg_test/test_file.json` is for training split metadata and is **not** valid for `test_seg.py`.
+- If abnormal masks are all black with `model_latest`, switch to `-chk model_best_ab`.
 
 ---
 
@@ -201,6 +228,21 @@ Check:
 2. `AUTORG_MEDSAM2_REPO` path exists
 3. `AUTORG_MEDSAM2_CONFIG=configs/sam2.1_hiera_t512.yaml`
 4. `AUTORG_MEDSAM2_CKPT` points to real `.pt` file
+
+### Observation: `avg metric not computed (no ground-truth labels in test file)`
+This is expected for inference-only JSON files.
+
+To enable metric computation, add `"label"` paths in your `-test` JSON entries:
+
+```json
+[
+  {
+    "image": "/path/to/BraTS20_Training_001_flair.nii.gz",
+    "label": "/path/to/BraTS20_Training_001_seg.nii.gz",
+    "modal": "T2FLAIR"
+  }
+]
+```
 
 ---
 

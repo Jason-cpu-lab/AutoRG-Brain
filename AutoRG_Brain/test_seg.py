@@ -14,6 +14,14 @@
 
 
 import argparse
+import warnings
+
+warnings.filterwarnings(
+    "ignore",
+    message=r".*cuda\.cudart module is deprecated.*",
+    category=FutureWarning,
+)
+
 import torch
 
 from inference.predict import predict_from_folder
@@ -150,7 +158,10 @@ def main():
                         step_size=step_size, checkpoint_name=args.chk, modal=modal)
     end = time()
     save_json(end - st, join(output_folder, 'prediction_time.txt'))
-    print("avg metric",dice_abnormal)
+    if dice_abnormal is None:
+        print("avg metric not computed (no ground-truth labels in test file)")
+    else:
+        print("avg metric", dice_abnormal)
 
 if __name__ == "__main__":
     main()

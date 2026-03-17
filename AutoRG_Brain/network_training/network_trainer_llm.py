@@ -21,7 +21,7 @@ from batchgenerators.utilities.file_and_folder_operations import *
 from network.neural_network import SegmentationNetwork
 from sklearn.model_selection import KFold
 from torch import nn
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 from torch.optim.lr_scheduler import _LRScheduler
 
 matplotlib.use("agg")
@@ -413,7 +413,7 @@ class NetworkTrainer(object):
         # after the training is done, the epoch is incremented one more time in my old code. This results in
         # self.epoch = 1001 for old trained models when the epoch is actually 1000. This causes issues because
         # len(self.all_tr_losses) = 1000 and the plot function will fail. We can easily detect and correct that here
-        if self.epoch != len(self.all_tr_losses):
+        if train and self.epoch != len(self.all_tr_losses):
             self.print_to_log_file("WARNING in loading checkpoint: self.epoch != len(self.all_tr_losses). This is "
                                    "due to an old bug and should only appear when you are loading old models. New "
                                    "models should have this fixed! self.epoch is now set to len(self.all_tr_losses)")
@@ -428,7 +428,7 @@ class NetworkTrainer(object):
 
     def _maybe_init_amp(self):
         if self.fp16 and self.amp_grad_scaler is None:
-            self.amp_grad_scaler = GradScaler()
+            self.amp_grad_scaler = GradScaler(device='cuda')
 
     def plot_network_architecture(self):
         """
@@ -672,7 +672,7 @@ class NetworkTrainer(object):
         self.optimizer.zero_grad()
 
         if self.fp16:
-            with autocast():
+            with autocast(device_type='cuda'):
                 output = self.network(data)
                 del data
                 l = self.loss(output, target)

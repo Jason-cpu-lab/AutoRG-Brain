@@ -210,7 +210,8 @@ def predict_cases(model, output_folder, list_of_lists, list_of_segs, output_file
     print("starting prediction...")
     # this d is from trainer.preprocess_patient
 
-    print("len list of lists",len(list_of_lists),len(list_of_segs))
+    seg_count = len(list_of_segs) if list_of_segs is not None else 0
+    print("len list of lists", len(list_of_lists), seg_count)
 
     if list_of_segs is not None:
         dices = []
@@ -385,10 +386,11 @@ def predict_cases(model, output_folder, list_of_lists, list_of_segs, output_file
     pool.join()
 
     if list_of_segs is not None:
-        # return test_dices['avg']
-        return 0
+        if len(dices) > 0:
+            return float(np.mean([i[0] for i in dices]))
+        return 0.0
     else:
-        return 0
+        return None
 
 def check_input_folder_and_return_caseIDs(input_folder, expected_num_modalities):
     print("This model expects %d input modalities for each image" % expected_num_modalities)
