@@ -671,7 +671,8 @@ class NetworkTrainer(object):
                 
                 if self.val_eval_criterion_MA[v] > self.best_val_eval_criterion_MA[v]:
                     self.best_val_eval_criterion_MA[v] = self.val_eval_criterion_MA[v]
-                if self.save_best_checkpoint: self.save_checkpoint(join(self.output_folder, "model_best_"+v+".model"))
+                    if self.save_best_checkpoint:
+                        self.save_checkpoint(join(self.output_folder, "model_best_" + v + ".model"))
             
             # check if the current epoch is the best one according to moving average of validation criterion. If so
             # then save 'best' model

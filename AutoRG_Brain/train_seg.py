@@ -37,7 +37,14 @@ def main():
     parser.add_argument("-train", "--train_file", type=str, required=False, default=None, help="use this if you want to train on customized ids")
     parser.add_argument("--only_ana", required=False, default=False, action="store_true",help="only optimize anatomy segmentation loss")
     parser.add_argument("--abnormal_type", type=str, required=False, default="intense",help="set the way yo synthesis abnormaly")
-    parser.add_argument("--network_type", type=str, required=False, default="share",help="set the way yo synthesis abnormaly")
+    parser.add_argument(
+        "--network_type",
+        type=str,
+        required=False,
+        default="share",
+        choices=["normal", "share", "medsam2"],
+        help="segmentation backbone type",
+    )
 
     parser.add_argument("-train_batch", "--num_batches_per_epoch", type=int, required=False, default=250)
     parser.add_argument("-val_batch", "--num_val_batches_per_epoch", type=int, required=False, default=50)

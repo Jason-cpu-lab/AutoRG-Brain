@@ -30,6 +30,7 @@ from .nnUNetTrainer import nnUNetTrainer
 # network
 from network.generic_UNet import Generic_UNet
 from network.generic_UNet_share import Generic_UNet as Generic_UNet_share
+from network.medsam2_adapter import MedSAM2SegAdapter
 from network.initialization import InitWeights_He
 from network.neural_network import SegmentationNetwork
 
@@ -80,6 +81,7 @@ from torch.utils.tensorboard import SummaryWriter
 import SimpleITK as sitk
 
 import random
+import os
 
 class nnUNetTrainerV2(nnUNetTrainer):
     """
@@ -152,7 +154,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.pin_memory = True
 
         # default fallback; will be aligned to stage plans in initialize
-        self.batch_size = 2
+        self.batch_size = 8
 
         self.client = None
         self.dataset_directory_bucket = dataset_directory_bucket
@@ -229,6 +231,8 @@ class nnUNetTrainerV2(nnUNetTrainer):
 
             self.process_plans(self.plans)
             self.batch_size = self.plans['plans_per_stage'][self.stage].get('batch_size', self.batch_size)
+            if self.network_type in ("medsam2", "sam2"):
+                self.batch_size = min(self.batch_size, 1)
 
             self.setup_DA_params()
 
@@ -358,7 +362,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
                                         dropout_op_kwargs,
                                         net_nonlin, net_nonlin_kwargs, True, False, lambda x: x, InitWeights_He(1e-2),
                                         self.net_num_pool_op_kernel_sizes, self.net_conv_kernel_sizes, False, True, True)
-        else:
+        elif self.network_type == "share":
 
             self.network = Generic_UNet_share(self.num_input_channels, self.base_num_features, 96, 2,
                             len(self.net_num_pool_op_kernel_sizes),
@@ -366,6 +370,19 @@ class nnUNetTrainerV2(nnUNetTrainer):
                             dropout_op_kwargs,
                             net_nonlin, net_nonlin_kwargs, True, False, lambda x: x, InitWeights_He(1e-2),
                             self.net_num_pool_op_kernel_sizes, self.net_conv_kernel_sizes, False, True, True)
+        elif self.network_type in ("medsam2", "sam2"):
+            medsam2_enable = os.environ.get("AUTORG_USE_MEDSAM2", "0") == "1"
+            self.network = MedSAM2SegAdapter(
+                in_channels=self.num_input_channels,
+                num_classes_anatomy=96,
+                num_classes_abnormal=2,
+                embed_dim=max(64, self.base_num_features),
+                deep_supervision=True,
+                use_medsam2_encoder=medsam2_enable,
+            )
+            self.print_to_log_file(f"Initialized MedSAM2 adapter (encoder={self.network.encoder_name})")
+        else:
+            raise ValueError(f"Unsupported network_type: {self.network_type}. Use one of ['normal', 'share', 'medsam2']")
 
         if torch.cuda.is_available():
             self.network.cuda()
@@ -373,10 +390,13 @@ class nnUNetTrainerV2(nnUNetTrainer):
 
     def initialize_optimizer_and_scheduler(self):
         assert self.network is not None, "self.initialize_network must be called first"
-        self.optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
-                                         momentum=0.99, nesterov=True)
-        #### this optimizer params seems better ####
-        self.optimizer.param_groups[0]["momentum"] = 0.95
+        if self.network_type in ("medsam2", "sam2"):
+            self.optimizer = torch.optim.AdamW(self.network.parameters(), lr=1e-4, weight_decay=self.weight_decay)
+        else:
+            self.optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
+                                             momentum=0.99, nesterov=True)
+            #### this optimizer params seems better ####
+            self.optimizer.param_groups[0]["momentum"] = 0.95
         
         self.lr_scheduler = None
 
@@ -857,28 +877,34 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.online_eval_fp_ana = np.sum(self.online_eval_fp_ana, 0)
         self.online_eval_fn_ana = np.sum(self.online_eval_fn_ana, 0)
 
-        global_dc_per_class_ana = [i for i in [2 * i / (2 * i + j + k) for i, j, k in
-                                           zip(self.online_eval_tp_ana, self.online_eval_fp_ana, self.online_eval_fn_ana)]
-                               if not np.isnan(i)]
+        global_dc_per_class_ana = [
+            (2 * i) / (2 * i + j + k)
+            for i, j, k in zip(self.online_eval_tp_ana, self.online_eval_fp_ana, self.online_eval_fn_ana)
+            if (2 * i + j + k) > 0
+        ]
+        mean_global_dc_ana = float(np.mean(global_dc_per_class_ana)) if len(global_dc_per_class_ana) > 0 else 0.0
         if mode == "train":
-            self.all_train_eval_metrics_ana.append(np.mean(global_dc_per_class_ana))
+            self.all_train_eval_metrics_ana.append(mean_global_dc_ana)
         else:
-            self.all_val_eval_metrics_ana['test'].append(np.mean(global_dc_per_class_ana))
+            self.all_val_eval_metrics_ana['test'].append(mean_global_dc_ana)
 
         self.online_eval_tp_ab = np.sum(self.online_eval_tp_ab, 0)
         self.online_eval_fp_ab = np.sum(self.online_eval_fp_ab, 0)
         self.online_eval_fn_ab = np.sum(self.online_eval_fn_ab, 0)
 
-        global_dc_per_class_ab = [i for i in [2 * i / (2 * i + j + k) for i, j, k in
-                                           zip(self.online_eval_tp_ab, self.online_eval_fp_ab, self.online_eval_fn_ab)]
-                               if not np.isnan(i)]
+        global_dc_per_class_ab = [
+            (2 * i) / (2 * i + j + k)
+            for i, j, k in zip(self.online_eval_tp_ab, self.online_eval_fp_ab, self.online_eval_fn_ab)
+            if (2 * i + j + k) > 0
+        ]
+        mean_global_dc_ab = float(np.mean(global_dc_per_class_ab)) if len(global_dc_per_class_ab) > 0 else 0.0
         if mode == "train":
-            self.all_train_eval_metrics_ab.append(np.mean(global_dc_per_class_ab))
+            self.all_train_eval_metrics_ab.append(mean_global_dc_ab)
         else:
-            self.all_val_eval_metrics_ab['test'].append(np.mean(global_dc_per_class_ab))
+            self.all_val_eval_metrics_ab['test'].append(mean_global_dc_ab)
 
-        self.print_to_log_file("Average global foreground Dice for anatomy:", np.mean(global_dc_per_class_ana))
-        self.print_to_log_file("Average global foreground Dice for abnormal:",np.mean(global_dc_per_class_ab))
+        self.print_to_log_file("Average global foreground Dice for anatomy:", mean_global_dc_ana)
+        self.print_to_log_file("Average global foreground Dice for abnormal:", mean_global_dc_ab)
         # self.print_to_log_file("(interpret this as an estimate for the Dice of the different classes. This is not "
         #                        "exact.)")
 
