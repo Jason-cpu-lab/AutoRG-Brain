@@ -6,6 +6,7 @@ This document explains:
 3. How to run inference.
 4. Common errors and how to fix them.
 5. March 2026 bug/warning fixes for `test_seg.py` inference.
+6. March 2026 checkpoint selection fix (`model_best_*` vs `model_latest`) and direct use of `MedSAM2_latest.pt`.
 
 The goal is to use a MedSAM2-based segmentation backbone **without changing AutoRG-Brain pipeline flow**.
 
@@ -27,6 +28,13 @@ The inference/evaluation path was updated to fix warnings and a metric bug:
 - ✅ Clearer output for unlabeled test JSON:
   - if your test JSON has no `label` field, output is now:
     - `avg metric not computed (no ground-truth labels in test file)`
+- ✅ Checkpoint-type mismatch guidance added:
+  - `-chk` loads an AutoRG checkpoint (`*.model` + `*.model.pkl`) that defines `network_type`
+  - if a folder contains mixed history (`share` and `medsam2` checkpoints), choose a checkpoint whose `.model.pkl` has `network_type='medsam2'`
+  - in the current validated workspace, `model_latest` is `medsam2`, while `model_best_ab/model_best_ana/model_best_both` are `share`
+- ✅ Direct MedSAM2 checkpoint usage validated:
+  - `AUTORG_MEDSAM2_CKPT` can point directly to `checkpoints/MedSAM2_latest.pt`
+  - adapter initialization confirms `encoder=medsam2`
 
 If you still see `avg metric 0` from older logs, that was pre-fix behavior.
 
@@ -99,6 +107,10 @@ cd /home/jason/autorg/AutoRG-Brain/external/MedSAM2
 mkdir -p checkpoints
 wget -O checkpoints/sam2.1_hiera_tiny.pt \
   https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt
+
+# Optional/recommended MedSAM2 task checkpoint
+wget -O checkpoints/MedSAM2_latest.pt \
+  https://huggingface.co/wanglab/MedSAM2/resolve/main/MedSAM2_latest.pt
 ```
 
 ---
@@ -111,7 +123,10 @@ Set these before training or inference:
 export AUTORG_USE_MEDSAM2=1
 export AUTORG_MEDSAM2_REPO=/home/jason/autorg/AutoRG-Brain/external/MedSAM2
 export AUTORG_MEDSAM2_CONFIG=configs/sam2.1_hiera_t512.yaml
+# Option A: SAM2 tiny backbone checkpoint
 export AUTORG_MEDSAM2_CKPT=/home/jason/autorg/AutoRG-Brain/external/MedSAM2/checkpoints/sam2.1_hiera_tiny.pt
+# Option B (validated): MedSAM2 latest checkpoint
+# export AUTORG_MEDSAM2_CKPT=/home/jason/autorg/AutoRG-Brain/external/MedSAM2/checkpoints/MedSAM2_latest.pt
 export AUTORG_MEDSAM2_FREEZE=1
 
 # Memory controls (recommended for your GPU usage)
@@ -159,7 +174,7 @@ cd /home/jason/autorg/AutoRG-Brain/AutoRG_Brain
 python test_seg.py \
   -o /home/jason/autorg/AutoRG-Brain/inference_output/medsam2_run \
   -model_folder /home/jason/autorg/AutoRG-Brain/trained_model_output/nnUNet/3d_fullres/Task001_seg_test/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0 \
-  -chk model_best_ab \
+  -chk model_latest \
   -test /home/jason/autorg/AutoRG-Brain/raw_data/nnUNet_raw_data/brats_custom_format_local_3.json \
   --modal T2FLAIR \
   --dice_type abnormal \
@@ -174,7 +189,8 @@ python test_seg.py \
 - To compute Dice/NSD/HD metrics, each item must also include `"label"`.
 - If `"label"` is missing, segmentation still runs and NIfTI outputs are saved, but aggregate metric is intentionally not computed.
 - `/home/jason/autorg/AutoRG-Brain/raw_data/nnUNet_raw_data/Task001_seg_test/test_file.json` is for training split metadata and is **not** valid for `test_seg.py`.
-- If abnormal masks are all black with `model_latest`, switch to `-chk model_best_ab`.
+- `-chk` selects an AutoRG checkpoint file. Always ensure that checkpoint's `.model.pkl` has `network_type='medsam2'`.
+- In this validated workspace: use `-chk model_latest` for MedSAM2 inference (`model_best_*` currently map to `share`).
 
 ---
 
@@ -228,6 +244,21 @@ Check:
 2. `AUTORG_MEDSAM2_REPO` path exists
 3. `AUTORG_MEDSAM2_CONFIG=configs/sam2.1_hiera_t512.yaml`
 4. `AUTORG_MEDSAM2_CKPT` points to real `.pt` file
+
+### Observation: model loads but MedSAM2 is not used
+Cause: `-chk` points to a checkpoint whose `.model.pkl` encodes `network_type='share'` (or `normal`).
+
+Quick check:
+```bash
+python - <<'PY'
+from batchgenerators.utilities.file_and_folder_operations import load_pickle
+p='/home/jason/autorg/AutoRG-Brain/trained_model_output/nnUNet/3d_fullres/Task001_seg_test/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_latest.model.pkl'
+init = load_pickle(p)['init']
+print('network_type:', init[14])
+PY
+```
+
+Expected for MedSAM2 inference: `network_type: medsam2`.
 
 ### Observation: `avg metric not computed (no ground-truth labels in test file)`
 This is expected for inference-only JSON files.
