@@ -19,7 +19,7 @@ import numpy as np
 import torch
 from sklearn.model_selection import KFold
 from torch import nn
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 from batchgenerators.utilities.file_and_folder_operations import *
 import torch.backends.cudnn as cudnn
 from time import time, sleep
@@ -232,7 +232,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
             self.process_plans(self.plans)
             self.batch_size = self.plans['plans_per_stage'][self.stage].get('batch_size', self.batch_size)
             if self.network_type in ("medsam2", "sam2"):
-                self.batch_size = min(self.batch_size, 1)
+                self.batch_size = 8
 
             self.setup_DA_params()
 
@@ -985,7 +985,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.optimizer.zero_grad()
 
         if self.fp16:
-            with autocast():
+            with autocast(device_type='cuda', enabled=torch.cuda.is_available()):
                 output_anatomy, output_abnormal = self.network(data, modal)
                 del data
                 l = self.loss(output_anatomy, target_anatomy) if self.only_ana else self.loss(output_anatomy, target_anatomy) + self.loss(output_abnormal, target_abnormal)  

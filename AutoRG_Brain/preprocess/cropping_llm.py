@@ -76,11 +76,16 @@ def get_case_identifier(case):
     elif filename.endswith('.nii'):
         filename = filename[:-4]  # "BraTS20_Training_001_flair_ana"
     
-    # Remove only the _ana suffix, keep modality
-    if filename.endswith('_ana'):
-        case_identifier = filename[:-4]  # Remove last 4 characters: "_ana"
-    else:
-        case_identifier = filename
+    # Normalize known label suffixes so preprocessed identifiers match split IDs.
+    # Example:
+    #   BraTS-MEN-00008-000-t1n_ana_mask -> BraTS-MEN-00008-000-t1n
+    #   BraTS2021_00000_t1_ana_mask      -> BraTS2021_00000_t1
+    for suffix in ('_ana_mask', '_ab_mask', '_bbox', '_ana', '_ab'):
+        if filename.endswith(suffix):
+            filename = filename[:-len(suffix)]
+            break
+
+    case_identifier = filename
     
     return case_identifier
 
@@ -106,11 +111,37 @@ def load_case_from_list_of_files(data_files, seg_file1=None, seg_file2=None):
     properties["itk_direction"] = data_itk[0].GetDirection()
 
     data_npy = np.vstack([sitk.GetArrayFromImage(d)[None] for d in data_itk])
+
+    def _align_to_reference(seg_itk, reference_itk, seg_path):
+        same_grid = (
+            seg_itk.GetSize() == reference_itk.GetSize()
+            and seg_itk.GetSpacing() == reference_itk.GetSpacing()
+            and seg_itk.GetOrigin() == reference_itk.GetOrigin()
+            and seg_itk.GetDirection() == reference_itk.GetDirection()
+        )
+        if same_grid:
+            return seg_itk
+
+        print(
+            f"[WARN] Resampling segmentation to reference grid for {seg_path}. "
+            f"seg_size={seg_itk.GetSize()}, ref_size={reference_itk.GetSize()}"
+        )
+        return sitk.Resample(
+            seg_itk,
+            reference_itk,
+            sitk.Transform(),
+            sitk.sitkNearestNeighbor,
+            0.0,
+            seg_itk.GetPixelID(),
+        )
     
     # print(io)
     if seg_file1 is not None and seg_file2 is not None:
         seg_itk1 = sitk.ReadImage(seg_file1)
         seg_itk2 = sitk.ReadImage(seg_file2)
+        ref_itk = data_itk[0]
+        seg_itk1 = _align_to_reference(seg_itk1, ref_itk, seg_file1)
+        seg_itk2 = _align_to_reference(seg_itk2, ref_itk, seg_file2)
         seg_npy = np.vstack([sitk.GetArrayFromImage(d)[None].astype(np.float32) for d in [seg_itk1, seg_itk2]])
     else:
         seg_npy = None

@@ -326,6 +326,10 @@ cd AutoRG_Brain
 
 ```shell
 ## preprocess the dataset
+# local filesystem workflow (no Petrel/Ceph required)
+python -m experiment_planning.nnUNet_plan_and_preprocess_llm -t 1 --verify_dataset_integrity
+
+# bucket workflow (requires ~/petreloss.conf and bucket paths)
 python -m experiment_planning_bucket.nnUNet_plan_and_preprocess_llm_bucket -t 1 --verify_dataset_integrity
 
 ## run training
@@ -338,6 +342,10 @@ python train_seg.py 3d_fullres nnUNetTrainerV2 001 0 --network_type share --buck
 
 ## preprocess the dataset
 ## the plan_file should be the preprocess pkl file used in segmentation training, which is stored at 
+# local filesystem workflow
+python -m experiment_planning.nnUNet_plan_and_preprocess_llm -t 2 --verify_dataset_integrity --plan_file Task001_seg_test/nnUNetPlansv2.1_plans_3D.pkl
+
+# bucket workflow
 python -m experiment_planning_bucket.nnUNet_plan_and_preprocess_llm_bucket -t 2 --verify_dataset_integrity --plan_file Task001_seg_test/nnUNetPlansv2.1_plans_3D.pkl
 
 ## run training 

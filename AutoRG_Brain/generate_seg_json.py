@@ -101,22 +101,20 @@ def find_local_gt_for_image(img_path: Path):
     stem = strip_nii(img_path.name)
 
     # ISLES-2022: derivatives/sub-xxx/ses-xxx/sub-xxx_ses-xxx_msk.nii[.gz]
-    if "sub-strokecase" in stem.lower() and "ses-" in stem.lower():
-        m_isles = re.match(r"(sub-[^_]+)_(ses-[^_]+)_.*$", stem, flags=re.I)
-        if m_isles:
-            subj, ses = m_isles.group(1), m_isles.group(2)
-            for anc in [parent] + list(parent.parents):
-                deriv = anc / "derivatives"
-                if deriv.exists() and deriv.is_dir():
-                    for c in [
-                        deriv / subj / ses / f"{subj}_{ses}_msk.nii",
-                        deriv / subj / ses / f"{subj}_{ses}_msk.nii.gz",
-                        deriv / subj / ses / f"{subj}_{ses}_MASK.nii.gz",
-                        deriv / subj / ses / f"{subj}_{ses}_mask.nii.gz",
-                    ]:
-                        if c.exists():
-                            return str(c)
-                    break
+    subj, ses = infer_isles_subject_session(img_path, stem)
+    if subj and ses:
+        for anc in [parent] + list(parent.parents):
+            deriv = anc / "derivatives"
+            if deriv.exists() and deriv.is_dir():
+                for c in [
+                    deriv / subj / ses / f"{subj}_{ses}_msk.nii",
+                    deriv / subj / ses / f"{subj}_{ses}_msk.nii.gz",
+                    deriv / subj / ses / f"{subj}_{ses}_MASK.nii.gz",
+                    deriv / subj / ses / f"{subj}_{ses}_mask.nii.gz",
+                ]:
+                    if c.exists():
+                        return str(c)
+                break
 
     # BraTS style: <case>_<modal>.nii[.gz] -> <case>_seg.nii[.gz]
     m = re.match(r"(.+?)[_-](flair|t1|t1n|t1ce|t1c|t2|t2w|t2f|dwi|adc)$", stem, flags=re.I)
@@ -188,6 +186,41 @@ def get_dataset_name(img: Path, data_root: Path):
         return "UNKNOWN"
 
 
+def infer_isles_subject_session(img_path: Path, stem: str):
+    """Infer ISLES subject/session IDs, preferring folder path over filename.
+
+    This avoids mismatches for nested files whose filename can be strokeperf-*
+    while folders correctly encode sub-strokecase*/ses-*.
+    """
+    subj = None
+    ses = None
+    for part in img_path.parts:
+        if subj is None and re.fullmatch(r"sub-strokecase[^/]*", part, flags=re.I):
+            subj = part
+        if ses is None and re.fullmatch(r"ses-[^/]+", part, flags=re.I):
+            ses = part
+
+    if subj and ses:
+        return subj, ses
+
+    m = re.match(r"(sub-[^_]+)_(ses-[^_]+)_.*$", stem, flags=re.I)
+    if m:
+        return m.group(1), m.group(2)
+    return None, None
+
+
+def pseudo_lookup_candidates(map_dict, stems):
+    seen = set()
+    for s in stems:
+        if not s or s in seen:
+            continue
+        seen.add(s)
+        hit = pseudo_lookup(map_dict, s)
+        if hit is not None:
+            return hit
+    return None
+
+
 def build_entries(data_root: Path, pseudo_roots):
     ab_map, ana_map = build_pseudo_maps(pseudo_roots)
 
@@ -227,6 +260,11 @@ def build_entries(data_root: Path, pseudo_roots):
         modal = detect_modal(stem)
         if modal is None:
             continue
+
+        # For ISLES-2022, keep ADC and DWI only (exclude FLAIR/T2FLAIR)
+        if dataset_name == "ISLES-2022" and modal not in {"ADC", "DWI"}:
+            continue
+
         stats["eligible_modal_images"] += 1
         dataset_stats[dataset_name]["eligible_modal_images"] += 1
 
@@ -234,8 +272,27 @@ def build_entries(data_root: Path, pseudo_roots):
         label2 = find_local_gt_for_image(img)
         l2_from_gt = label2 is not None
         label2_source = "gt" if l2_from_gt else "pseudo"
+        parent_stem = strip_nii(img.parent.name)
+        subj, ses = infer_isles_subject_session(img, stem)
+
+        if dataset_name == "ISLES-2022":
+            # ISLES nested files may have perf-style filenames that don't match masks;
+            # prefer folder/session identifiers for robust matching.
+            lookup_stems = []
+            if parent_stem != img.parent.name:
+                lookup_stems.append(parent_stem)
+            if subj and ses:
+                lookup_stems.extend([f"{subj}_{ses}", f"{subj}_{ses}_{modal.lower()}"])
+            lookup_stems.append(stem)
+        else:
+            lookup_stems = [stem]
+            if parent_stem != img.parent.name:
+                lookup_stems.append(parent_stem)
+            if subj and ses:
+                lookup_stems.extend([f"{subj}_{ses}", f"{subj}_{ses}_{modal.lower()}"])
+
         if label2 is None:
-            label2 = pseudo_lookup(ab_map, stem)
+            label2 = pseudo_lookup_candidates(ab_map, lookup_stems)
 
         # label1 (anatomy): local ana first, then pseudo fallback
         label1 = None
@@ -251,7 +308,7 @@ def build_entries(data_root: Path, pseudo_roots):
                 label1_source = "local"
                 break
         if label1 is None:
-            label1 = pseudo_lookup(ana_map, stem)
+            label1 = pseudo_lookup_candidates(ana_map, lookup_stems)
             if label1 is not None:
                 label1_source = "pseudo"
 
@@ -402,7 +459,7 @@ def parse_args():
         type=Path,
         action="append",
         default=[
-            Path("/home/jason/autorg/inference_output"),
+            Path("/home/jason/autorg/inference_output/T1_priority"),
         ],
         help="Pseudo label root (can be passed multiple times)",
     )
