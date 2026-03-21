@@ -159,7 +159,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.client = None
         self.dataset_directory_bucket = dataset_directory_bucket
 
-        self.unpack_data = True ### unpack the preprocessed .npz file to .npy file
+        self.unpack_data = unpack_data ### unpack preprocessed .npz to .npy only when requested
 
 
         # print("output_folder",self.output_folder)

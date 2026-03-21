@@ -75,7 +75,25 @@ def unpack_dataset(folder, threads=default_num_threads, key="data",train_file = 
     if train_file is None:
         npz_files = subfiles(folder, True, None, ".npz", True)
     else:
-        npz_files = list(map(lambda x:join(folder,x+'.npz'), train_file['training'])) + list(map(lambda x:join(folder,x+'.npz'), train_file['validation']))
+        val_names = []
+        validation = train_file.get('validation', [])
+        if isinstance(validation, list):
+            val_names = validation
+        elif isinstance(validation, dict):
+            for item in validation:
+                if isinstance(validation[item], list):
+                    val_names += validation[item]
+                elif isinstance(validation[item], dict) and 'data' in validation[item]:
+                    val_names += validation[item]['data']
+
+        val_names = list(set(val_names))
+        train_names = train_file.get('training', [])
+        all_names = list(train_names) + val_names
+        npz_files = [join(folder, x + '.npz') for x in all_names if isfile(join(folder, x + '.npz'))]
+
+        missing = len(all_names) - len(npz_files)
+        if missing > 0:
+            print(f"[unpack_dataset] skip {missing} missing preprocessed npz files")
     
     p.map(convert_to_npy, zip(npz_files, [key] * len(npz_files)))
     p.close()
@@ -204,7 +222,13 @@ class DataLoader3D(SlimDataLoaderBase):
         self.list_of_keys = list(self._data.keys()) # self._data = data
         # case_dic = json.load(open('/mnt/petrelfs/leijiayu/nnUNet/nnUNet_raw/nnUNet_raw_data/Task003_llm/case_dic.json','r'))
         case_dic = json.load(open('case_dic.json','r'))
-        self.list_of_keys_modal = {'DWI':list(filter(lambda x:x in case_dic['DWI'],self.list_of_keys)),'T1WI':list(filter(lambda x:x in case_dic['T1WI'],self.list_of_keys)),'T2WI':list(filter(lambda x:x in case_dic['T2WI'], self.list_of_keys)),'T2FLAIR':list(filter(lambda x:x in case_dic['T2FLAIR'], self.list_of_keys))}
+        self.list_of_keys_modal = {
+            'DWI': list(filter(lambda x: x in case_dic.get('DWI', []), self.list_of_keys)),
+            'T1WI': list(filter(lambda x: x in case_dic.get('T1WI', []), self.list_of_keys)),
+            'T2WI': list(filter(lambda x: x in case_dic.get('T2WI', []), self.list_of_keys)),
+            'T2FLAIR': list(filter(lambda x: x in case_dic.get('T2FLAIR', []), self.list_of_keys)),
+            'ADC': list(filter(lambda x: x in case_dic.get('ADC', []), self.list_of_keys))
+        }
         del case_dic
 
         # need_to_pad denotes by how much we need to pad the data so that if we sample a patch of size final_patch_size
@@ -243,7 +267,10 @@ class DataLoader3D(SlimDataLoaderBase):
     def generate_train_batch(self):
 
         # choose a modal
-        choose_modal = np.random.choice(['DWI','T1WI','T2WI','T2FLAIR'], p=[0.25,0.25,0.25,0.25])
+        available_modals = [m for m in ['DWI', 'T1WI', 'T2WI', 'T2FLAIR', 'ADC'] if len(self.list_of_keys_modal[m]) > 0]
+        if len(available_modals) == 0:
+            raise RuntimeError("No available modality keys found in case_dic for current split")
+        choose_modal = np.random.choice(available_modals, p=[1.0 / len(available_modals)] * len(available_modals))
         selected_keys = np.random.choice(self.list_of_keys_modal[choose_modal], self.batch_size, True, None) # pick batch_size samples，samples may repeat
         modal = choose_modal
 

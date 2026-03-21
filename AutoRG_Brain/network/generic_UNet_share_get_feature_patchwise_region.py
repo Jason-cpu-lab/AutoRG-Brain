@@ -294,6 +294,7 @@ class Generic_UNet(SegmentationNetwork):
         self.conv_blocks_context_b = []
         self.conv_blocks_context_c = []
         self.conv_blocks_context_d = []
+        self.conv_blocks_context_e = []
 
         self.conv_blocks_localization = []
         self.td = []
@@ -336,6 +337,11 @@ class Generic_UNet(SegmentationNetwork):
                                                               self.dropout_op_kwargs, self.nonlin, self.nonlin_kwargs,
                                                               first_stride, basic_block=basic_block))
             self.conv_blocks_context_d.append(StackedConvLayers(input_features, output_features, num_conv_per_stage,
+                                                              self.conv_op, self.conv_kwargs, self.norm_op,
+                                                              self.norm_op_kwargs, self.dropout_op,
+                                                              self.dropout_op_kwargs, self.nonlin, self.nonlin_kwargs,
+                                                              first_stride, basic_block=basic_block))
+            self.conv_blocks_context_e.append(StackedConvLayers(input_features, output_features, num_conv_per_stage,
                                                               self.conv_op, self.conv_kwargs, self.norm_op,
                                                               self.norm_op_kwargs, self.dropout_op,
                                                               self.dropout_op_kwargs, self.nonlin, self.nonlin_kwargs,
@@ -391,6 +397,13 @@ class Generic_UNet(SegmentationNetwork):
                               self.norm_op, self.norm_op_kwargs, self.dropout_op, self.dropout_op_kwargs, self.nonlin,
                               self.nonlin_kwargs, basic_block=basic_block)))
         self.conv_blocks_context_d.append(nn.Sequential(
+            StackedConvLayers(input_features, output_features, num_conv_per_stage - 1, self.conv_op, self.conv_kwargs,
+                              self.norm_op, self.norm_op_kwargs, self.dropout_op, self.dropout_op_kwargs, self.nonlin,
+                              self.nonlin_kwargs, first_stride, basic_block=basic_block),
+            StackedConvLayers(output_features, final_num_features, 1, self.conv_op, self.conv_kwargs,
+                              self.norm_op, self.norm_op_kwargs, self.dropout_op, self.dropout_op_kwargs, self.nonlin,
+                              self.nonlin_kwargs, basic_block=basic_block)))
+        self.conv_blocks_context_e.append(nn.Sequential(
             StackedConvLayers(input_features, output_features, num_conv_per_stage - 1, self.conv_op, self.conv_kwargs,
                               self.norm_op, self.norm_op_kwargs, self.dropout_op, self.dropout_op_kwargs, self.nonlin,
                               self.nonlin_kwargs, first_stride, basic_block=basic_block),
@@ -466,6 +479,7 @@ class Generic_UNet(SegmentationNetwork):
         self.conv_blocks_context_b = nn.ModuleList(self.conv_blocks_context_b) # encoder_b
         self.conv_blocks_context_c = nn.ModuleList(self.conv_blocks_context_c) # encoder_c
         self.conv_blocks_context_d = nn.ModuleList(self.conv_blocks_context_d) # encoder_d
+        self.conv_blocks_context_e = nn.ModuleList(self.conv_blocks_context_e) # encoder_e
 
         self.td = nn.ModuleList(self.td) # MaxPool3D s
         self.tu = nn.ModuleList(self.tu) # nn.ConvTranspose3d s
@@ -586,6 +600,10 @@ class Generic_UNet(SegmentationNetwork):
             conv_blocks_context = self.conv_blocks_context_c
         elif modal == 'T2FLAIR':
             conv_blocks_context = self.conv_blocks_context_d
+        elif modal == 'ADC':
+            conv_blocks_context = self.conv_blocks_context_e
+        else:
+            raise ValueError(f"Unsupported modal '{modal}'. Expected one of DWI/T1WI/T1CE/T2WI/T2FLAIR/ADC")
         
         for d in range(len(conv_blocks_context) - 1):
             x = conv_blocks_context[d](x)

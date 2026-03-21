@@ -222,7 +222,7 @@ def get_shape(anatomy_scan):
 def get_intensity(brain_scan, anatomy_scan, modality):
     lateral_ventricle = np.logical_or(anatomy_scan == 46, anatomy_scan==47)
     lateral_ventricle_intensity = np.mean(brain_scan[lateral_ventricle])
-    if modality == "T2WI":
+    if modality in ("T2WI", "ADC"):
         not_high_mask = brain_scan<lateral_ventricle_intensity
         brain_mask = np.logical_and(not_high_mask,np.logical_and(anatomy_scan!=0, np.logical_not(lateral_ventricle)))
         isointensity = np.percentile(brain_scan[brain_mask],30)

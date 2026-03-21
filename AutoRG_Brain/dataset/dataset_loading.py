@@ -207,6 +207,8 @@ class DataLoader3D(SlimDataLoaderBase):
                 return 'c'
             elif kl.endswith('_flair') or kl.endswith('_t2flair'):
                 return 'd'
+            elif kl.endswith('_adc'):
+                return 'e'
             elif kl.startswith('a'):
                 return 'a'
             elif kl.startswith('b'):
@@ -215,9 +217,11 @@ class DataLoader3D(SlimDataLoaderBase):
                 return 'c'
             elif kl.startswith('d'):
                 return 'd'
+            elif kl.startswith('e'):
+                return 'e'
             else:
                 return None
-        self.list_of_keys_modal = {'a': [], 'b': [], 'c': [], 'd': []}
+        self.list_of_keys_modal = {'a': [], 'b': [], 'c': [], 'd': [], 'e': []}
         for k in self.list_of_keys:
             mk = _modal_key(k)
             if mk is not None:
@@ -225,7 +229,7 @@ class DataLoader3D(SlimDataLoaderBase):
         unmatched_keys = [k for k in self.list_of_keys if _modal_key(k) is None]
         print(f"[DataLoader3D] modal buckets: a={len(self.list_of_keys_modal['a'])}, "
               f"b={len(self.list_of_keys_modal['b'])}, c={len(self.list_of_keys_modal['c'])}, "
-              f"d={len(self.list_of_keys_modal['d'])}, total={len(self.list_of_keys)}")
+              f"d={len(self.list_of_keys_modal['d'])}, e={len(self.list_of_keys_modal['e'])}, total={len(self.list_of_keys)}")
         if unmatched_keys:
             print(f"[DataLoader3D] WARNING: {len(unmatched_keys)} keys did not match modal rules. "
                   f"Example: {unmatched_keys[:10]}")
@@ -242,7 +246,7 @@ class DataLoader3D(SlimDataLoaderBase):
         self.pad_sides = pad_sides
         self.data_shape, self.seg_shape = self.determine_shapes()
 
-        self.modal_dic = {'a':'DWI','b':'T1WI','c':'T2WI','d':'T2FLAIR'}
+        self.modal_dic = {'a':'DWI','b':'T1WI','c':'T2WI','d':'T2FLAIR','e':'ADC'}
 
         self.abnormal_type = abnormal_type
 
@@ -273,7 +277,7 @@ class DataLoader3D(SlimDataLoaderBase):
 
     def generate_train_batch(self):
 
-        available_modals = [m for m in ['a','b','c','d'] if len(self.list_of_keys_modal[m]) > 0]
+        available_modals = [m for m in ['a','b','c','d','e'] if len(self.list_of_keys_modal[m]) > 0]
         if len(available_modals) > 1 or (len(available_modals) == 1 and self.list_of_keys[0][3]!='_'):
             # six training (multi-modal or suffix-based single modal)
             p = np.array([1.0 / len(available_modals)] * len(available_modals))

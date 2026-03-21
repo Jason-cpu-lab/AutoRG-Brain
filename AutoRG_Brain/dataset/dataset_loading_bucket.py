@@ -233,7 +233,13 @@ class DataLoader3D_bucket(SlimDataLoaderBase):
         # list_of_keys = list(self._data.keys()) # self._data = data
         self.list_of_keys = list(self._data.keys()) # self._data = data
         case_dic = json.load(open('raw_data\Task001_seg_test\case_dic.json','r'))
-        self.list_of_keys_modal = {'DWI':list(filter(lambda x:x in case_dic['DWI'],self.list_of_keys)),'T1WI':list(filter(lambda x:x in case_dic['T1WI'],self.list_of_keys)),'T2WI':list(filter(lambda x:x in case_dic['T2WI'], self.list_of_keys)),'T2FLAIR':list(filter(lambda x:x in case_dic['T2FLAIR'], self.list_of_keys))}
+        self.list_of_keys_modal = {
+            'DWI': list(filter(lambda x: x in case_dic.get('DWI', []), self.list_of_keys)),
+            'T1WI': list(filter(lambda x: x in case_dic.get('T1WI', []), self.list_of_keys)),
+            'T2WI': list(filter(lambda x: x in case_dic.get('T2WI', []), self.list_of_keys)),
+            'T2FLAIR': list(filter(lambda x: x in case_dic.get('T2FLAIR', []), self.list_of_keys)),
+            'ADC': list(filter(lambda x: x in case_dic.get('ADC', []), self.list_of_keys))
+        }
         # self.list_of_keys_modal = {'DWI':['a106529893_resize_DWI','a106141749_resize_DWI'],'T1WI':['a106529893_resize_T1WI','a106141749_resize_T1WI'],'T2WI':['a106529893_resize_T2WI','a106141749_resize_T2WI'],'T2FLAIR':['a106529893_resize_T2FLAIR','a106141749_resize_T2FLAIR']}
         del case_dic
 
@@ -286,7 +292,10 @@ class DataLoader3D_bucket(SlimDataLoaderBase):
 
     def generate_train_batch(self):
 
-        choose_modal = np.random.choice(['DWI','T1WI','T2WI','T2FLAIR'], p=[0.25,0.25,0.25,0.25])
+        available_modals = [m for m in ['DWI', 'T1WI', 'T2WI', 'T2FLAIR', 'ADC'] if len(self.list_of_keys_modal[m]) > 0]
+        if len(available_modals) == 0:
+            raise RuntimeError("No available modality keys found in case_dic for current split")
+        choose_modal = np.random.choice(available_modals, p=[1.0 / len(available_modals)] * len(available_modals))
         selected_keys = np.random.choice(self.list_of_keys_modal[choose_modal], self.batch_size, True, None) # pick batch_size samples，samples may repeat
         modal = choose_modal
 
