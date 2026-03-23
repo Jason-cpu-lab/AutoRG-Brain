@@ -427,6 +427,71 @@ def seperate(anatomy_scan):
 
     return edge, center, skull_gap, whole_brain==1
 
+def _minimal_fallback_lesion(brain_scan, anatomy_scan, modality):
+    foreground = anatomy_scan > 0
+    if np.sum(foreground) == 0:
+        foreground = brain_scan > np.percentile(brain_scan, 25)
+    if np.sum(foreground) == 0:
+        foreground = np.ones_like(brain_scan, dtype=bool)
+
+    coords = np.argwhere(foreground)
+    lesion = np.zeros_like(foreground, dtype=bool)
+    center = None
+
+    for _ in range(20):
+        cx, cy, cz = coords[np.random.randint(len(coords))]
+        radius = random.randint(3, 6)
+
+        x0 = max(0, cx - radius)
+        x1 = min(brain_scan.shape[0], cx + radius + 1)
+        y0 = max(0, cy - radius)
+        y1 = min(brain_scan.shape[1], cy + radius + 1)
+        z0 = max(0, cz - radius)
+        z1 = min(brain_scan.shape[2], cz + radius + 1)
+
+        xx, yy, zz = np.ogrid[x0:x1, y0:y1, z0:z1]
+        sphere = ((xx - cx) ** 2 + (yy - cy) ** 2 + (zz - cz) ** 2) <= radius ** 2
+
+        candidate = np.zeros_like(lesion, dtype=bool)
+        candidate[x0:x1, y0:y1, z0:z1] = sphere
+        candidate = np.logical_and(candidate, foreground)
+
+        if np.sum(candidate) >= 30:
+            lesion = candidate
+            center = [int(cx), int(cy), int(cz)]
+            break
+
+    if np.sum(lesion) < 30:
+        lesion = np.zeros_like(lesion, dtype=bool)
+        fg_idx = np.where(foreground.ravel())[0]
+        n_pick = int(min(max(30, 1), len(fg_idx)))
+        pick = np.random.choice(fg_idx, size=n_pick, replace=False)
+        lesion.ravel()[pick] = True
+        lesion_coords = np.argwhere(lesion)
+        center = list(map(int, np.round(np.mean(lesion_coords, axis=0)))) if len(lesion_coords) > 0 else [
+            brain_scan.shape[0] // 2,
+            brain_scan.shape[1] // 2,
+            brain_scan.shape[2] // 2,
+        ]
+
+    region_vals = brain_scan[foreground]
+    if region_vals.size == 0:
+        region_vals = brain_scan.reshape(-1)
+
+    if modality in ("ADC", "T1WI"):
+        target_intensity = np.percentile(region_vals, 20)
+    else:
+        target_intensity = np.percentile(region_vals, 80)
+
+    blend = gaussian_filter(lesion.astype(np.float32), sigma=np.random.uniform(0.8, 1.6))
+    if np.max(blend) > 0:
+        blend = blend / np.max(blend)
+    blend = np.clip(blend, 0.0, 1.0)
+
+    out_scan = brain_scan * (1.0 - blend) + target_intensity * blend
+    out_mask = lesion.astype(np.uint8)
+    return out_scan, out_mask, center
+
 def SynthesisTumor(brain_scan, anatomy_scan, modality, properties=None):
     
     abnormal_mask = np.zeros(anatomy_scan.shape)
@@ -442,15 +507,15 @@ def SynthesisTumor(brain_scan, anatomy_scan, modality, properties=None):
             abnormal_mask = np.logical_or(abnormal_mask, abnormal_mask_anatomy)
             xyzs.append(center_coords)
         except:
-            if cnt>0:
-                print("continue")
-                continue
-            elif cnt == 0:
-                raise Exception
+            continue
     
     if np.sum(abnormal_mask>0)<30:
-        print("sum",np.sum(abnormal_mask))
-        raise Exception
+        brain_scan, fallback_mask, fallback_center = _minimal_fallback_lesion(brain_scan, anatomy_scan, modality)
+        abnormal_mask = np.logical_or(abnormal_mask, fallback_mask)
+        xyzs.append(fallback_center)
+
+    if len(xyzs) == 0:
+        xyzs.append([brain_scan.shape[0] // 2, brain_scan.shape[1] // 2, brain_scan.shape[2] // 2])
 
     return brain_scan,abnormal_mask, xyzs
 

@@ -1,1002 +1,1002 @@
 [
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0001/ses-0001/dwi/sub-strokecase0001_ses-0001_dwi.nii/sub-strokeperf0041_ses-20180528_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0001/ses-0001/dwi/sub-strokecase0001_ses-0001_dwi.nii/sub-strokecase0001_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0002/ses-0001/dwi/sub-strokecase0002_ses-0001_dwi.nii/sub-Stroke72_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0002/ses-0001/dwi/sub-strokecase0002_ses-0001_dwi.nii/sub-strokecase0002_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0003/ses-0001/dwi/sub-strokecase0003_ses-0001_dwi.nii/sub-strokeperf0053_ses-20191213_ornt-iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0003/ses-0001/dwi/sub-strokecase0003_ses-0001_dwi.nii/sub-strokecase0003_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0004/ses-0001/dwi/sub-strokecase0004_ses-0001_dwi.nii/sub-Stroke13_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0004/ses-0001/dwi/sub-strokecase0004_ses-0001_dwi.nii/sub-strokecase0004_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0005/ses-0001/dwi/sub-strokecase0005_ses-0001_dwi.nii/sub-basilarstroke0056_ses-20190915_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0005/ses-0001/dwi/sub-strokecase0005_ses-0001_dwi.nii/sub-strokecase0005_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0006/ses-0001/dwi/sub-strokecase0006_ses-0001_dwi.nii/sub-Stroke66_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0006/ses-0001/dwi/sub-strokecase0006_ses-0001_dwi.nii/sub-strokecase0006_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0007/ses-0001/dwi/sub-strokecase0007_ses-0001_dwi.nii/sub-basilarstroke0020_ses-20171119_ornt-2iso_skull-stripped_sequ-1007_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0007/ses-0001/dwi/sub-strokecase0007_ses-0001_dwi.nii/sub-strokecase0007_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0008/ses-0001/dwi/sub-strokecase0008_ses-0001_dwi.nii/sub-strokeperf0020_ses-20191019_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0008/ses-0001/dwi/sub-strokecase0008_ses-0001_dwi.nii/sub-strokecase0008_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0009/ses-0001/dwi/sub-strokecase0009_ses-0001_dwi.nii/sub-strokeperf0050_ses-20180101_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0009/ses-0001/dwi/sub-strokecase0009_ses-0001_dwi.nii/sub-strokecase0009_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0010/ses-0001/dwi/sub-strokecase0010_ses-0001_dwi.nii/sub-basilarstroke0059_ses-20191201_ornt-2iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0010/ses-0001/dwi/sub-strokecase0010_ses-0001_dwi.nii/sub-strokecase0010_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0011/ses-0001/dwi/sub-strokecase0011_ses-0001_dwi.nii/sub-strokeperf0012_ses-20190614_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0011/ses-0001/dwi/sub-strokecase0011_ses-0001_dwi.nii/sub-strokecase0011_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0012/ses-0001/dwi/sub-strokecase0012_ses-0001_dwi.nii/sub-Stroke106_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0012/ses-0001/dwi/sub-strokecase0012_ses-0001_dwi.nii/sub-strokecase0012_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0013/ses-0001/dwi/sub-strokecase0013_ses-0001_dwi.nii/sub-strokeperf0051_ses-20201004_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0013/ses-0001/dwi/sub-strokecase0013_ses-0001_dwi.nii/sub-strokecase0013_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0014/ses-0001/dwi/sub-strokecase0014_ses-0001_dwi.nii/sub-basilarstroke0024_ses-20180126_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0014/ses-0001/dwi/sub-strokecase0014_ses-0001_dwi.nii/sub-strokecase0014_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0015/ses-0001/dwi/sub-strokecase0015_ses-0001_dwi.nii/sub-strokeperf0009_ses-20201112_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0015/ses-0001/dwi/sub-strokecase0015_ses-0001_dwi.nii/sub-strokecase0015_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0016/ses-0001/dwi/sub-strokecase0016_ses-0001_dwi.nii/sub-Stroke99_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0016/ses-0001/dwi/sub-strokecase0016_ses-0001_dwi.nii/sub-strokecase0016_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0017/ses-0001/dwi/sub-strokecase0017_ses-0001_dwi.nii/sub-strokeperf0037_ses-20170515_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0017/ses-0001/dwi/sub-strokecase0017_ses-0001_dwi.nii/sub-strokecase0017_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0018/ses-0001/dwi/sub-strokecase0018_ses-0001_dwi.nii/sub-Stroke24_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0018/ses-0001/dwi/sub-strokecase0018_ses-0001_dwi.nii/sub-strokecase0018_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0019/ses-0001/dwi/sub-strokecase0019_ses-0001_dwi.nii/sub-basilarstroke0054_ses-20190722_ornt-2iso_skull-stripped_sequ-203_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0019/ses-0001/dwi/sub-strokecase0019_ses-0001_dwi.nii/sub-strokecase0019_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0020/ses-0001/dwi/sub-strokecase0020_ses-0001_dwi.nii/sub-Stroke65_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0020/ses-0001/dwi/sub-strokecase0020_ses-0001_dwi.nii/sub-strokecase0020_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0021/ses-0001/dwi/sub-strokecase0021_ses-0001_dwi.nii/sub-strokeperf0025_ses-20201023_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0021/ses-0001/dwi/sub-strokecase0021_ses-0001_dwi.nii/sub-strokecase0021_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0022/ses-0001/dwi/sub-strokecase0022_ses-0001_dwi.nii/sub-Stroke98_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0022/ses-0001/dwi/sub-strokecase0022_ses-0001_dwi.nii/sub-strokecase0022_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0023/ses-0001/dwi/sub-strokecase0023_ses-0001_dwi.nii/sub-strokeperf0022_ses-20180626_ornt-2iso_skull-stripped_sequ-703_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0023/ses-0001/dwi/sub-strokecase0023_ses-0001_dwi.nii/sub-strokecase0023_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0024/ses-0001/dwi/sub-strokecase0024_ses-0001_dwi.nii/sub-Stroke59_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0024/ses-0001/dwi/sub-strokecase0024_ses-0001_dwi.nii/sub-strokecase0024_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0025/ses-0001/dwi/sub-strokecase0025_ses-0001_dwi.nii/sub-basilarstroke0005_ses-20170329_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0025/ses-0001/dwi/sub-strokecase0025_ses-0001_dwi.nii/sub-strokecase0025_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0026/ses-0001/dwi/sub-strokecase0026_ses-0001_dwi.nii/sub-strokeperf0026_ses-20200118_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0026/ses-0001/dwi/sub-strokecase0026_ses-0001_dwi.nii/sub-strokecase0026_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0027/ses-0001/dwi/sub-strokecase0027_ses-0001_dwi.nii/sub-strokeperf0011_ses-20190717_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0027/ses-0001/dwi/sub-strokecase0027_ses-0001_dwi.nii/sub-strokecase0027_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0028/ses-0001/dwi/sub-strokecase0028_ses-0001_dwi.nii/sub-basilarstroke0064_ses-20200221_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0028/ses-0001/dwi/sub-strokecase0028_ses-0001_dwi.nii/sub-strokecase0028_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0029/ses-0001/dwi/sub-strokecase0029_ses-0001_dwi.nii/sub-basilarstroke0032_ses-20180425_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0029/ses-0001/dwi/sub-strokecase0029_ses-0001_dwi.nii/sub-strokecase0029_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0030/ses-0001/dwi/sub-strokecase0030_ses-0001_dwi.nii/sub-basilarstroke0002_ses-20170220_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0030/ses-0001/dwi/sub-strokecase0030_ses-0001_dwi.nii/sub-strokecase0030_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0031/ses-0001/dwi/sub-strokecase0031_ses-0001_dwi.nii/sub-strokeperf0038_ses-20180716_ornt-2iso_skull-stripped_sequ-203_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0031/ses-0001/dwi/sub-strokecase0031_ses-0001_dwi.nii/sub-strokecase0031_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0032/ses-0001/dwi/sub-strokecase0032_ses-0001_dwi.nii/sub-Stroke62_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0032/ses-0001/dwi/sub-strokecase0032_ses-0001_dwi.nii/sub-strokecase0032_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0033/ses-0001/dwi/sub-strokecase0033_ses-0001_dwi.nii/sub-strokeperf0043_ses-20190512_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0033/ses-0001/dwi/sub-strokecase0033_ses-0001_dwi.nii/sub-strokecase0033_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0034/ses-0001/dwi/sub-strokecase0034_ses-0001_dwi.nii/sub-basilarstroke0014_ses-20170903_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0034/ses-0001/dwi/sub-strokecase0034_ses-0001_dwi.nii/sub-strokecase0034_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0035/ses-0001/dwi/sub-strokecase0035_ses-0001_dwi.nii/sub-Stroke33_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0035/ses-0001/dwi/sub-strokecase0035_ses-0001_dwi.nii/sub-strokecase0035_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0036/ses-0001/dwi/sub-strokecase0036_ses-0001_dwi.nii/sub-basilarstroke0011_ses-20170814_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0036/ses-0001/dwi/sub-strokecase0036_ses-0001_dwi.nii/sub-strokecase0036_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0037/ses-0001/dwi/sub-strokecase0037_ses-0001_dwi.nii/sub-Stroke91_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0037/ses-0001/dwi/sub-strokecase0037_ses-0001_dwi.nii/sub-strokecase0037_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0038/ses-0001/dwi/sub-strokecase0038_ses-0001_dwi.nii/sub-Stroke35_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0038/ses-0001/dwi/sub-strokecase0038_ses-0001_dwi.nii/sub-strokecase0038_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0039/ses-0001/dwi/sub-strokecase0039_ses-0001_dwi.nii/sub-strokeperf0052_ses-20191017_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0039/ses-0001/dwi/sub-strokecase0039_ses-0001_dwi.nii/sub-strokecase0039_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0040/ses-0001/dwi/sub-strokecase0040_ses-0001_dwi.nii/sub-strokeperf0006_ses-20190622_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0040/ses-0001/dwi/sub-strokecase0040_ses-0001_dwi.nii/sub-strokecase0040_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0041/ses-0001/dwi/sub-strokecase0041_ses-0001_dwi.nii/sub-strokeperf0019_ses-20200623_ornt-2iso_skull-stripped_sequ-507_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0041/ses-0001/dwi/sub-strokecase0041_ses-0001_dwi.nii/sub-strokecase0041_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0042/ses-0001/dwi/sub-strokecase0042_ses-0001_dwi.nii/sub-strokeperf0016_ses-20190504_ornt-2iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0042/ses-0001/dwi/sub-strokecase0042_ses-0001_dwi.nii/sub-strokecase0042_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0043/ses-0001/dwi/sub-strokecase0043_ses-0001_dwi.nii/sub-Stroke23_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0043/ses-0001/dwi/sub-strokecase0043_ses-0001_dwi.nii/sub-strokecase0043_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0044/ses-0001/dwi/sub-strokecase0044_ses-0001_dwi.nii/sub-Stroke100_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0044/ses-0001/dwi/sub-strokecase0044_ses-0001_dwi.nii/sub-strokecase0044_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0045/ses-0001/dwi/sub-strokecase0045_ses-0001_dwi.nii/sub-basilarstroke0017_ses-20171026_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0045/ses-0001/dwi/sub-strokecase0045_ses-0001_dwi.nii/sub-strokecase0045_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0046/ses-0001/dwi/sub-strokecase0046_ses-0001_dwi.nii/sub-basilarstroke0015_ses-20171011_skull-stripped_sequ-402_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0046/ses-0001/dwi/sub-strokecase0046_ses-0001_dwi.nii/sub-strokecase0046_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0047/ses-0001/dwi/sub-strokecase0047_ses-0001_dwi.nii/sub-Stroke83_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0047/ses-0001/dwi/sub-strokecase0047_ses-0001_dwi.nii/sub-strokecase0047_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0048/ses-0001/dwi/sub-strokecase0048_ses-0001_dwi.nii/sub-strokeperf0047_ses-20190518_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0048/ses-0001/dwi/sub-strokecase0048_ses-0001_dwi.nii/sub-strokecase0048_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0049/ses-0001/dwi/sub-strokecase0049_ses-0001_dwi.nii/sub-basilarstroke0022_ses-20171210_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0049/ses-0001/dwi/sub-strokecase0049_ses-0001_dwi.nii/sub-strokecase0049_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0050/ses-0001/dwi/sub-strokecase0050_ses-0001_dwi.nii/sub-strokeperf0003_ses-20190603_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0050/ses-0001/dwi/sub-strokecase0050_ses-0001_dwi.nii/sub-strokecase0050_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0051/ses-0001/dwi/sub-strokecase0051_ses-0001_dwi.nii/sub-basilarstroke0055_ses-20190818_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0051/ses-0001/dwi/sub-strokecase0051_ses-0001_dwi.nii/sub-strokecase0051_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0052/ses-0001/dwi/sub-strokecase0052_ses-0001_dwi.nii/sub-strokeperf0054_ses-20170519_ornt-iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0052/ses-0001/dwi/sub-strokecase0052_ses-0001_dwi.nii/sub-strokecase0052_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0053/ses-0001/dwi/sub-strokecase0053_ses-0001_dwi.nii/sub-Stroke42_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0053/ses-0001/dwi/sub-strokecase0053_ses-0001_dwi.nii/sub-strokecase0053_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0054/ses-0001/dwi/sub-strokecase0054_ses-0001_dwi.nii/sub-Stroke9_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0054/ses-0001/dwi/sub-strokecase0054_ses-0001_dwi.nii/sub-strokecase0054_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0055/ses-0001/dwi/sub-strokecase0055_ses-0001_dwi.nii/sub-basilarstroke0040_ses-20180920_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0055/ses-0001/dwi/sub-strokecase0055_ses-0001_dwi.nii/sub-strokecase0055_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0056/ses-0001/dwi/sub-strokecase0056_ses-0001_dwi.nii/sub-strokeperf0029_ses-20200524_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0056/ses-0001/dwi/sub-strokecase0056_ses-0001_dwi.nii/sub-strokecase0056_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0057/ses-0001/dwi/sub-strokecase0057_ses-0001_dwi.nii/sub-strokeperf0048_ses-20200921_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0057/ses-0001/dwi/sub-strokecase0057_ses-0001_dwi.nii/sub-strokecase0057_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0058/ses-0001/dwi/sub-strokecase0058_ses-0001_dwi.nii/sub-Stroke25_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0058/ses-0001/dwi/sub-strokecase0058_ses-0001_dwi.nii/sub-strokecase0058_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0059/ses-0001/dwi/sub-strokecase0059_ses-0001_dwi.nii/sub-Stroke104_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0059/ses-0001/dwi/sub-strokecase0059_ses-0001_dwi.nii/sub-strokecase0059_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0060/ses-0001/dwi/sub-strokecase0060_ses-0001_dwi.nii/sub-Stroke22_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0060/ses-0001/dwi/sub-strokecase0060_ses-0001_dwi.nii/sub-strokecase0060_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0061/ses-0001/dwi/sub-strokecase0061_ses-0001_dwi.nii/sub-Stroke36_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0061/ses-0001/dwi/sub-strokecase0061_ses-0001_dwi.nii/sub-strokecase0061_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0062/ses-0001/dwi/sub-strokecase0062_ses-0001_dwi.nii/sub-strokeperf0030_ses-20200226_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0062/ses-0001/dwi/sub-strokecase0062_ses-0001_dwi.nii/sub-strokecase0062_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0063/ses-0001/dwi/sub-strokecase0063_ses-0001_dwi.nii/sub-Stroke52_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0063/ses-0001/dwi/sub-strokecase0063_ses-0001_dwi.nii/sub-strokecase0063_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0064/ses-0001/dwi/sub-strokecase0064_ses-0001_dwi.nii/sub-Stroke87_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0064/ses-0001/dwi/sub-strokecase0064_ses-0001_dwi.nii/sub-strokecase0064_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0065/ses-0001/dwi/sub-strokecase0065_ses-0001_dwi.nii/sub-strokeperf0005_ses-20191003_ornt-2iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0065/ses-0001/dwi/sub-strokecase0065_ses-0001_dwi.nii/sub-strokecase0065_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0066/ses-0001/dwi/sub-strokecase0066_ses-0001_dwi.nii/sub-Stroke15_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0066/ses-0001/dwi/sub-strokecase0066_ses-0001_dwi.nii/sub-strokecase0066_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0067/ses-0001/dwi/sub-strokecase0067_ses-0001_dwi.nii/sub-Stroke1_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0067/ses-0001/dwi/sub-strokecase0067_ses-0001_dwi.nii/sub-strokecase0067_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0068/ses-0001/dwi/sub-strokecase0068_ses-0001_dwi.nii/sub-basilarstroke0057_ses-20190929_ornt-2iso_skull-stripped_sequ-203_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0068/ses-0001/dwi/sub-strokecase0068_ses-0001_dwi.nii/sub-strokecase0068_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0069/ses-0001/dwi/sub-strokecase0069_ses-0001_dwi.nii/sub-Stroke64_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0069/ses-0001/dwi/sub-strokecase0069_ses-0001_dwi.nii/sub-strokecase0069_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0070/ses-0001/dwi/sub-strokecase0070_ses-0001_dwi.nii/sub-Stroke95_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0070/ses-0001/dwi/sub-strokecase0070_ses-0001_dwi.nii/sub-strokecase0070_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0071/ses-0001/dwi/sub-strokecase0071_ses-0001_dwi.nii/sub-basilarstroke0051_ses-20190521_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0071/ses-0001/dwi/sub-strokecase0071_ses-0001_dwi.nii/sub-strokecase0071_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0072/ses-0001/dwi/sub-strokecase0072_ses-0001_dwi.nii/sub-basilarstroke0049_ses-20190329_ornt-2iso_skull-stripped_sequ-603_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0072/ses-0001/dwi/sub-strokecase0072_ses-0001_dwi.nii/sub-strokecase0072_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0073/ses-0001/dwi/sub-strokecase0073_ses-0001_dwi.nii/sub-basilarstroke0023_ses-20171208_skull-stripped_sequ-11_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0073/ses-0001/dwi/sub-strokecase0073_ses-0001_dwi.nii/sub-strokecase0073_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0074/ses-0001/dwi/sub-strokecase0074_ses-0001_dwi.nii/sub-basilarstroke0042_ses-20181127_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0074/ses-0001/dwi/sub-strokecase0074_ses-0001_dwi.nii/sub-strokecase0074_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0075/ses-0001/dwi/sub-strokecase0075_ses-0001_dwi.nii/sub-basilarstroke0043_ses-20181226_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0075/ses-0001/dwi/sub-strokecase0075_ses-0001_dwi.nii/sub-strokecase0075_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0076/ses-0001/dwi/sub-strokecase0076_ses-0001_dwi.nii/sub-strokeperf0039_ses-20190211_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0076/ses-0001/dwi/sub-strokecase0076_ses-0001_dwi.nii/sub-strokecase0076_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0077/ses-0001/dwi/sub-strokecase0077_ses-0001_dwi.nii/sub-strokeperf0044_ses-20171015_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0077/ses-0001/dwi/sub-strokecase0077_ses-0001_dwi.nii/sub-strokecase0077_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0078/ses-0001/dwi/sub-strokecase0078_ses-0001_dwi.nii/sub-ctsr01426_ses-20180514_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0078/ses-0001/dwi/sub-strokecase0078_ses-0001_dwi.nii/sub-strokecase0078_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0079/ses-0001/dwi/sub-strokecase0079_ses-0001_dwi.nii/sub-Stroke73_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0079/ses-0001/dwi/sub-strokecase0079_ses-0001_dwi.nii/sub-strokecase0079_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0080/ses-0001/dwi/sub-strokecase0080_ses-0001_dwi.nii/sub-basilarstroke0021_ses-20171126_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0080/ses-0001/dwi/sub-strokecase0080_ses-0001_dwi.nii/sub-strokecase0080_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0081/ses-0001/dwi/sub-strokecase0081_ses-0001_dwi.nii/sub-strokeperf0014_ses-20181011_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0081/ses-0001/dwi/sub-strokecase0081_ses-0001_dwi.nii/sub-strokecase0081_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0082/ses-0001/dwi/sub-strokecase0082_ses-0001_dwi.nii/sub-Stroke78_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0082/ses-0001/dwi/sub-strokecase0082_ses-0001_dwi.nii/sub-strokecase0082_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0083/ses-0001/dwi/sub-strokecase0083_ses-0001_dwi.nii/sub-basilarstroke0007_ses-20170529_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0083/ses-0001/dwi/sub-strokecase0083_ses-0001_dwi.nii/sub-strokecase0083_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0084/ses-0001/dwi/sub-strokecase0084_ses-0001_dwi.nii/sub-strokeperf0046_ses-20180320_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0084/ses-0001/dwi/sub-strokecase0084_ses-0001_dwi.nii/sub-strokecase0084_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0085/ses-0001/dwi/sub-strokecase0085_ses-0001_dwi.nii/sub-strokeperf0027_ses-20200216_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0085/ses-0001/dwi/sub-strokecase0085_ses-0001_dwi.nii/sub-strokecase0085_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0086/ses-0001/dwi/sub-strokecase0086_ses-0001_dwi.nii/sub-Stroke40_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0086/ses-0001/dwi/sub-strokecase0086_ses-0001_dwi.nii/sub-strokecase0086_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0087/ses-0001/dwi/sub-strokecase0087_ses-0001_dwi.nii/sub-strokeperf0010_ses-20190329_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0087/ses-0001/dwi/sub-strokecase0087_ses-0001_dwi.nii/sub-strokecase0087_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0088/ses-0001/dwi/sub-strokecase0088_ses-0001_dwi.nii/sub-Stroke112_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0088/ses-0001/dwi/sub-strokecase0088_ses-0001_dwi.nii/sub-strokecase0088_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0089/ses-0001/dwi/sub-strokecase0089_ses-0001_dwi.nii/sub-Stroke49_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0089/ses-0001/dwi/sub-strokecase0089_ses-0001_dwi.nii/sub-strokecase0089_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0090/ses-0001/dwi/sub-strokecase0090_ses-0001_dwi.nii/sub-Stroke54_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0090/ses-0001/dwi/sub-strokecase0090_ses-0001_dwi.nii/sub-strokecase0090_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0091/ses-0001/dwi/sub-strokecase0091_ses-0001_dwi.nii/sub-strokeperf0001_ses-20190609_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0091/ses-0001/dwi/sub-strokecase0091_ses-0001_dwi.nii/sub-strokecase0091_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0092/ses-0001/dwi/sub-strokecase0092_ses-0001_dwi.nii/sub-basilarstroke0004_ses-20170402_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0092/ses-0001/dwi/sub-strokecase0092_ses-0001_dwi.nii/sub-strokecase0092_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0093/ses-0001/dwi/sub-strokecase0093_ses-0001_dwi.nii/sub-Stroke57_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0093/ses-0001/dwi/sub-strokecase0093_ses-0001_dwi.nii/sub-strokecase0093_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0094/ses-0001/dwi/sub-strokecase0094_ses-0001_dwi.nii/sub-basilarstroke0025_ses-20180126_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0094/ses-0001/dwi/sub-strokecase0094_ses-0001_dwi.nii/sub-strokecase0094_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0095/ses-0001/dwi/sub-strokecase0095_ses-0001_dwi.nii/sub-strokeperf0013_ses-20190701_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0095/ses-0001/dwi/sub-strokecase0095_ses-0001_dwi.nii/sub-strokecase0095_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0096/ses-0001/dwi/sub-strokecase0096_ses-0001_dwi.nii/sub-strokeperf0023_ses-20181228_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0096/ses-0001/dwi/sub-strokecase0096_ses-0001_dwi.nii/sub-strokecase0096_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0097/ses-0001/dwi/sub-strokecase0097_ses-0001_dwi.nii/sub-basilarstroke0053_ses-20190522_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0097/ses-0001/dwi/sub-strokecase0097_ses-0001_dwi.nii/sub-strokecase0097_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0098/ses-0001/dwi/sub-strokecase0098_ses-0001_dwi.nii/sub-strokeperf0008_ses-20190218_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0098/ses-0001/dwi/sub-strokecase0098_ses-0001_dwi.nii/sub-strokecase0098_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0099/ses-0001/dwi/sub-strokecase0099_ses-0001_dwi.nii/sub-ctsr01372_ses-20170828_ornt-2iso_skull-stripped_sequ-703_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0099/ses-0001/dwi/sub-strokecase0099_ses-0001_dwi.nii/sub-strokecase0099_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0100/ses-0001/dwi/sub-strokecase0100_ses-0001_dwi.nii/sub-Stroke38_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0100/ses-0001/dwi/sub-strokecase0100_ses-0001_dwi.nii/sub-strokecase0100_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0101/ses-0001/dwi/sub-strokecase0101_ses-0001_dwi.nii/sub-strokeperf0031_ses-20181011_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0101/ses-0001/dwi/sub-strokecase0101_ses-0001_dwi.nii/sub-strokecase0101_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0102/ses-0001/dwi/sub-strokecase0102_ses-0001_dwi.nii/sub-strokeperf0032_ses-20181224_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0102/ses-0001/dwi/sub-strokecase0102_ses-0001_dwi.nii/sub-strokecase0102_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0103/ses-0001/dwi/sub-strokecase0103_ses-0001_dwi.nii/sub-Stroke76_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0103/ses-0001/dwi/sub-strokecase0103_ses-0001_dwi.nii/sub-strokecase0103_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0104/ses-0001/dwi/sub-strokecase0104_ses-0001_dwi.nii/sub-basilarstroke0013_ses-20170901_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0104/ses-0001/dwi/sub-strokecase0104_ses-0001_dwi.nii/sub-strokecase0104_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0105/ses-0001/dwi/sub-strokecase0105_ses-0001_dwi.nii/sub-basilarstroke0018_ses-20171110_skull-stripped_sequ-13_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0105/ses-0001/dwi/sub-strokecase0105_ses-0001_dwi.nii/sub-strokecase0105_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0106/ses-0001/dwi/sub-strokecase0106_ses-0001_dwi.nii/sub-basilarstroke0001_ses-20170213_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0106/ses-0001/dwi/sub-strokecase0106_ses-0001_dwi.nii/sub-strokecase0106_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0107/ses-0001/dwi/sub-strokecase0107_ses-0001_dwi.nii/sub-basilarstroke0047_ses-20190214_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0107/ses-0001/dwi/sub-strokecase0107_ses-0001_dwi.nii/sub-strokecase0107_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0108/ses-0001/dwi/sub-strokecase0108_ses-0001_dwi.nii/sub-strokeperf0035_ses-20200625_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0108/ses-0001/dwi/sub-strokecase0108_ses-0001_dwi.nii/sub-strokecase0108_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0109/ses-0001/dwi/sub-strokecase0109_ses-0001_dwi.nii/sub-Stroke2_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0109/ses-0001/dwi/sub-strokecase0109_ses-0001_dwi.nii/sub-strokecase0109_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0110/ses-0001/dwi/sub-strokecase0110_ses-0001_dwi.nii/sub-basilarstroke0027_ses-20180210_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0110/ses-0001/dwi/sub-strokecase0110_ses-0001_dwi.nii/sub-strokecase0110_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0111/ses-0001/dwi/sub-strokecase0111_ses-0001_dwi.nii/sub-Stroke105_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0111/ses-0001/dwi/sub-strokecase0111_ses-0001_dwi.nii/sub-strokecase0111_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0112/ses-0001/dwi/sub-strokecase0112_ses-0001_dwi.nii/sub-Stroke48_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0112/ses-0001/dwi/sub-strokecase0112_ses-0001_dwi.nii/sub-strokecase0112_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0113/ses-0001/dwi/sub-strokecase0113_ses-0001_dwi.nii/sub-basilarstroke0041_ses-20181112_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0113/ses-0001/dwi/sub-strokecase0113_ses-0001_dwi.nii/sub-strokecase0113_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0114/ses-0001/dwi/sub-strokecase0114_ses-0001_dwi.nii/sub-Stroke55_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0114/ses-0001/dwi/sub-strokecase0114_ses-0001_dwi.nii/sub-strokecase0114_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0115/ses-0001/dwi/sub-strokecase0115_ses-0001_dwi.nii/sub-Stroke29_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0115/ses-0001/dwi/sub-strokecase0115_ses-0001_dwi.nii/sub-strokecase0115_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0116/ses-0001/dwi/sub-strokecase0116_ses-0001_dwi.nii/sub-basilarstroke0037_ses-20180717_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0116/ses-0001/dwi/sub-strokecase0116_ses-0001_dwi.nii/sub-strokecase0116_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0117/ses-0001/dwi/sub-strokecase0117_ses-0001_dwi.nii/sub-strokeperf0007_ses-20190103_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0117/ses-0001/dwi/sub-strokecase0117_ses-0001_dwi.nii/sub-strokecase0117_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0118/ses-0001/dwi/sub-strokecase0118_ses-0001_dwi.nii/sub-strokeperf0034_ses-20170911_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0118/ses-0001/dwi/sub-strokecase0118_ses-0001_dwi.nii/sub-strokecase0118_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0119/ses-0001/dwi/sub-strokecase0119_ses-0001_dwi.nii/sub-Stroke75_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0119/ses-0001/dwi/sub-strokecase0119_ses-0001_dwi.nii/sub-strokecase0119_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0120/ses-0001/dwi/sub-strokecase0120_ses-0001_dwi.nii/sub-strokeperf0036_ses-20190401_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0120/ses-0001/dwi/sub-strokecase0120_ses-0001_dwi.nii/sub-strokecase0120_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0121/ses-0001/dwi/sub-strokecase0121_ses-0001_dwi.nii/sub-Stroke43_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0121/ses-0001/dwi/sub-strokecase0121_ses-0001_dwi.nii/sub-strokecase0121_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0122/ses-0001/dwi/sub-strokecase0122_ses-0001_dwi.nii/sub-strokeperf0045_ses-20170112_ornt-iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0122/ses-0001/dwi/sub-strokecase0122_ses-0001_dwi.nii/sub-strokecase0122_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0123/ses-0001/dwi/sub-strokecase0123_ses-0001_dwi.nii/sub-strokeperf0002_ses-20171209_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0123/ses-0001/dwi/sub-strokecase0123_ses-0001_dwi.nii/sub-strokecase0123_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0124/ses-0001/dwi/sub-strokecase0124_ses-0001_dwi.nii/sub-strokeperf0017_ses-20200422_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0124/ses-0001/dwi/sub-strokecase0124_ses-0001_dwi.nii/sub-strokecase0124_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0125/ses-0001/dwi/sub-strokecase0125_ses-0001_dwi.nii/sub-Stroke16_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0125/ses-0001/dwi/sub-strokecase0125_ses-0001_dwi.nii/sub-strokecase0125_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0126/ses-0001/dwi/sub-strokecase0126_ses-0001_dwi.nii/sub-Stroke101_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0126/ses-0001/dwi/sub-strokecase0126_ses-0001_dwi.nii/sub-strokecase0126_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0127/ses-0001/dwi/sub-strokecase0127_ses-0001_dwi.nii/sub-basilarstroke0058_ses-20191122_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0127/ses-0001/dwi/sub-strokecase0127_ses-0001_dwi.nii/sub-strokecase0127_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0128/ses-0001/dwi/sub-strokecase0128_ses-0001_dwi.nii/sub-basilarstroke0038_ses-20180718_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0128/ses-0001/dwi/sub-strokecase0128_ses-0001_dwi.nii/sub-strokecase0128_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0129/ses-0001/dwi/sub-strokecase0129_ses-0001_dwi.nii/sub-Stroke92_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0129/ses-0001/dwi/sub-strokecase0129_ses-0001_dwi.nii/sub-strokecase0129_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0130/ses-0001/dwi/sub-strokecase0130_ses-0001_dwi.nii/sub-basilarstroke0003_ses-20170216_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0130/ses-0001/dwi/sub-strokecase0130_ses-0001_dwi.nii/sub-strokecase0130_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0131/ses-0001/dwi/sub-strokecase0131_ses-0001_dwi.nii/sub-basilarstroke0046_ses-20190206_ornt-2iso_skull-stripped_sequ-603_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0131/ses-0001/dwi/sub-strokecase0131_ses-0001_dwi.nii/sub-strokecase0131_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0132/ses-0001/dwi/sub-strokecase0132_ses-0001_dwi.nii/sub-basilarstroke0063_ses-20200204_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0132/ses-0001/dwi/sub-strokecase0132_ses-0001_dwi.nii/sub-strokecase0132_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0133/ses-0001/dwi/sub-strokecase0133_ses-0001_dwi.nii/sub-basilarstroke0044_ses-20190131_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0133/ses-0001/dwi/sub-strokecase0133_ses-0001_dwi.nii/sub-strokecase0133_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0134/ses-0001/dwi/sub-strokecase0134_ses-0001_dwi.nii/sub-basilarstroke0050_ses-20190417_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0134/ses-0001/dwi/sub-strokecase0134_ses-0001_dwi.nii/sub-strokecase0134_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0135/ses-0001/dwi/sub-strokecase0135_ses-0001_dwi.nii/sub-basilarstroke0052_ses-20190710_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0135/ses-0001/dwi/sub-strokecase0135_ses-0001_dwi.nii/sub-strokecase0135_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0136/ses-0001/dwi/sub-strokecase0136_ses-0001_dwi.nii/sub-basilarstroke0030_ses-20180907_ornt-2iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0136/ses-0001/dwi/sub-strokecase0136_ses-0001_dwi.nii/sub-strokecase0136_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0137/ses-0001/dwi/sub-strokecase0137_ses-0001_dwi.nii/sub-strokeperf0015_ses-20180218_skull-stripped_sequ-4_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0137/ses-0001/dwi/sub-strokecase0137_ses-0001_dwi.nii/sub-strokecase0137_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0138/ses-0001/dwi/sub-strokecase0138_ses-0001_dwi.nii/sub-Stroke58_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0138/ses-0001/dwi/sub-strokecase0138_ses-0001_dwi.nii/sub-strokecase0138_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0139/ses-0001/dwi/sub-strokecase0139_ses-0001_dwi.nii/sub-basilarstroke0034_ses-20180502_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0139/ses-0001/dwi/sub-strokecase0139_ses-0001_dwi.nii/sub-strokecase0139_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0140/ses-0001/dwi/sub-strokecase0140_ses-0001_dwi.nii/sub-basilarstroke0039_ses-20180921_ornt-2iso_skull-stripped_sequ-803_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0140/ses-0001/dwi/sub-strokecase0140_ses-0001_dwi.nii/sub-strokecase0140_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0141/ses-0001/dwi/sub-strokecase0141_ses-0001_dwi.nii/sub-strokeperf0021_ses-20180703_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0141/ses-0001/dwi/sub-strokecase0141_ses-0001_dwi.nii/sub-strokecase0141_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0142/ses-0001/dwi/sub-strokecase0142_ses-0001_dwi.nii/sub-basilarstroke0031_ses-20180331_ornt-ax_skull-stripped_sequ-402_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0142/ses-0001/dwi/sub-strokecase0142_ses-0001_dwi.nii/sub-strokecase0142_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0143/ses-0001/dwi/sub-strokecase0143_ses-0001_dwi.nii/sub-basilarstroke0026_ses-20180212_ornt-2iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0143/ses-0001/dwi/sub-strokecase0143_ses-0001_dwi.nii/sub-strokecase0143_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0144/ses-0001/dwi/sub-strokecase0144_ses-0001_dwi.nii/sub-Stroke81_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0144/ses-0001/dwi/sub-strokecase0144_ses-0001_dwi.nii/sub-strokecase0144_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0145/ses-0001/dwi/sub-strokecase0145_ses-0001_dwi.nii/sub-strokeperf0049_ses-20190517_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0145/ses-0001/dwi/sub-strokecase0145_ses-0001_dwi.nii/sub-strokecase0145_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0146/ses-0001/dwi/sub-strokecase0146_ses-0001_dwi.nii/sub-strokeperf0040_ses-20180924_ornt-2iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0146/ses-0001/dwi/sub-strokecase0146_ses-0001_dwi.nii/sub-strokecase0146_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0147/ses-0001/dwi/sub-strokecase0147_ses-0001_dwi.nii/sub-Stroke93_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0147/ses-0001/dwi/sub-strokecase0147_ses-0001_dwi.nii/sub-strokecase0147_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0148/ses-0001/dwi/sub-strokecase0148_ses-0001_dwi.nii/sub-Stroke39_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0148/ses-0001/dwi/sub-strokecase0148_ses-0001_dwi.nii/sub-strokecase0148_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0149/ses-0001/dwi/sub-strokecase0149_ses-0001_dwi.nii/sub-Stroke97_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0149/ses-0001/dwi/sub-strokecase0149_ses-0001_dwi.nii/sub-strokecase0149_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0150/ses-0001/dwi/sub-strokecase0150_ses-0001_dwi.nii/sub-Stroke10_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0150/ses-0001/dwi/sub-strokecase0150_ses-0001_dwi.nii/sub-strokecase0150_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0151/ses-0001/dwi/sub-strokecase0151_ses-0001_dwi.nii/sub-Stroke6_iso_dwi_skull_stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0151/ses-0001/dwi/sub-strokecase0151_ses-0001_dwi.nii/sub-strokecase0151_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0152/ses-0001/dwi/sub-strokecase0152_ses-0001_dwi.nii/sub-strokeperf0092_ses-20201003_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0152/ses-0001/dwi/sub-strokecase0152_ses-0001_dwi.nii/sub-strokecase0152_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0153/ses-0001/dwi/sub-strokecase0153_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0153/ses-0001/dwi/sub-strokecase0153_ses-0001_dwi.nii/sub-strokecase0153_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0154/ses-0001/dwi/sub-strokecase0154_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0154/ses-0001/dwi/sub-strokecase0154_ses-0001_dwi.nii/sub-strokecase0154_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0155/ses-0001/dwi/sub-strokecase0155_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0155/ses-0001/dwi/sub-strokecase0155_ses-0001_dwi.nii/sub-strokecase0155_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0156/ses-0001/dwi/sub-strokecase0156_ses-0001_dwi.nii/sub-basilarstroke0091_ses-20210222_ornt-iso_skull-stripped_sequ-603_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0156/ses-0001/dwi/sub-strokecase0156_ses-0001_dwi.nii/sub-strokecase0156_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0157/ses-0001/dwi/sub-strokecase0157_ses-0001_dwi.nii/sub-basilarstroke0094_ses-20170826_ornt-iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0157/ses-0001/dwi/sub-strokecase0157_ses-0001_dwi.nii/sub-strokecase0157_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0158/ses-0001/dwi/sub-strokecase0158_ses-0001_dwi.nii/sub-strokeperf0056_ses-20191128_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0158/ses-0001/dwi/sub-strokecase0158_ses-0001_dwi.nii/sub-strokecase0158_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0159/ses-0001/dwi/sub-strokecase0159_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0159/ses-0001/dwi/sub-strokecase0159_ses-0001_dwi.nii/sub-strokecase0159_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0160/ses-0001/dwi/sub-strokecase0160_ses-0001_dwi.nii/sub-basilarstroke0077_ses-20200620_ornt-iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0160/ses-0001/dwi/sub-strokecase0160_ses-0001_dwi.nii/sub-strokecase0160_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0161/ses-0001/dwi/sub-strokecase0161_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0161/ses-0001/dwi/sub-strokecase0161_ses-0001_dwi.nii/sub-strokecase0161_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0162/ses-0001/dwi/sub-strokecase0162_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0162/ses-0001/dwi/sub-strokecase0162_ses-0001_dwi.nii/sub-strokecase0162_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0163/ses-0001/dwi/sub-strokecase0163_ses-0001_dwi.nii/sub-strokeperf0076_ses-20180810_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0163/ses-0001/dwi/sub-strokecase0163_ses-0001_dwi.nii/sub-strokecase0163_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0164/ses-0001/dwi/sub-strokecase0164_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0164/ses-0001/dwi/sub-strokecase0164_ses-0001_dwi.nii/sub-strokecase0164_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0165/ses-0001/dwi/sub-strokecase0165_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0165/ses-0001/dwi/sub-strokecase0165_ses-0001_dwi.nii/sub-strokecase0165_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0166/ses-0001/dwi/sub-strokecase0166_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0166/ses-0001/dwi/sub-strokecase0166_ses-0001_dwi.nii/sub-strokecase0166_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0167/ses-0001/dwi/sub-strokecase0167_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0167/ses-0001/dwi/sub-strokecase0167_ses-0001_dwi.nii/sub-strokecase0167_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0168/ses-0001/dwi/sub-strokecase0168_ses-0001_dwi.nii/sub-strokeperf0060_ses-20191030_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0168/ses-0001/dwi/sub-strokecase0168_ses-0001_dwi.nii/sub-strokecase0168_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0169/ses-0001/dwi/sub-strokecase0169_ses-0001_dwi.nii/sub-strokeperf0059_ses-20181130_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0169/ses-0001/dwi/sub-strokecase0169_ses-0001_dwi.nii/sub-strokecase0169_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0170/ses-0001/dwi/sub-strokecase0170_ses-0001_dwi.nii/sub-basilarstroke0073_ses-20200506_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0170/ses-0001/dwi/sub-strokecase0170_ses-0001_dwi.nii/sub-strokecase0170_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0171/ses-0001/dwi/sub-strokecase0171_ses-0001_dwi.nii/sub-strokeperf0081_ses-20200901_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0171/ses-0001/dwi/sub-strokecase0171_ses-0001_dwi.nii/sub-strokecase0171_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0172/ses-0001/dwi/sub-strokecase0172_ses-0001_dwi.nii/sub-basilarstroke0090_ses-20210218_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0172/ses-0001/dwi/sub-strokecase0172_ses-0001_dwi.nii/sub-strokecase0172_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0173/ses-0001/dwi/sub-strokecase0173_ses-0001_dwi.nii/sub-basilarstroke0092_ses-20210227_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0173/ses-0001/dwi/sub-strokecase0173_ses-0001_dwi.nii/sub-strokecase0173_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0174/ses-0001/dwi/sub-strokecase0174_ses-0001_dwi.nii/sub-basilarstroke0089_ses-20210218_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0174/ses-0001/dwi/sub-strokecase0174_ses-0001_dwi.nii/sub-strokecase0174_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0175/ses-0001/dwi/sub-strokecase0175_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0175/ses-0001/dwi/sub-strokecase0175_ses-0001_dwi.nii/sub-strokecase0175_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0176/ses-0001/dwi/sub-strokecase0176_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0176/ses-0001/dwi/sub-strokecase0176_ses-0001_dwi.nii/sub-strokecase0176_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0177/ses-0001/dwi/sub-strokecase0177_ses-0001_dwi.nii/sub-basilarstroke0068_ses-20200309_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0177/ses-0001/dwi/sub-strokecase0177_ses-0001_dwi.nii/sub-strokecase0177_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0178/ses-0001/dwi/sub-strokecase0178_ses-0001_dwi.nii/sub-strokeperf0084_ses-20200914_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0178/ses-0001/dwi/sub-strokecase0178_ses-0001_dwi.nii/sub-strokecase0178_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0179/ses-0001/dwi/sub-strokecase0179_ses-0001_dwi.nii/sub-strokeperf0082_ses-20201029_ornt-iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0179/ses-0001/dwi/sub-strokecase0179_ses-0001_dwi.nii/sub-strokecase0179_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0180/ses-0001/dwi/sub-strokecase0180_ses-0001_dwi.nii/sub-strokeperf0078_ses-20190712_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0180/ses-0001/dwi/sub-strokecase0180_ses-0001_dwi.nii/sub-strokecase0180_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0181/ses-0001/dwi/sub-strokecase0181_ses-0001_dwi.nii/sub-basilarstroke0071_ses-20200318_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0181/ses-0001/dwi/sub-strokecase0181_ses-0001_dwi.nii/sub-strokecase0181_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0182/ses-0001/dwi/sub-strokecase0182_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0182/ses-0001/dwi/sub-strokecase0182_ses-0001_dwi.nii/sub-strokecase0182_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0183/ses-0001/dwi/sub-strokecase0183_ses-0001_dwi.nii/sub-strokeperf0090_ses-20191120_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0183/ses-0001/dwi/sub-strokecase0183_ses-0001_dwi.nii/sub-strokecase0183_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0184/ses-0001/dwi/sub-strokecase0184_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0184/ses-0001/dwi/sub-strokecase0184_ses-0001_dwi.nii/sub-strokecase0184_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0185/ses-0001/dwi/sub-strokecase0185_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0185/ses-0001/dwi/sub-strokecase0185_ses-0001_dwi.nii/sub-strokecase0185_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0186/ses-0001/dwi/sub-strokecase0186_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0186/ses-0001/dwi/sub-strokecase0186_ses-0001_dwi.nii/sub-strokecase0186_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0187/ses-0001/dwi/sub-strokecase0187_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0187/ses-0001/dwi/sub-strokecase0187_ses-0001_dwi.nii/sub-strokecase0187_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0188/ses-0001/dwi/sub-strokecase0188_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0188/ses-0001/dwi/sub-strokecase0188_ses-0001_dwi.nii/sub-strokecase0188_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0189/ses-0001/dwi/sub-strokecase0189_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0189/ses-0001/dwi/sub-strokecase0189_ses-0001_dwi.nii/sub-strokecase0189_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0190/ses-0001/dwi/sub-strokecase0190_ses-0001_dwi.nii/sub-strokeperf0095_ses-20200605_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0190/ses-0001/dwi/sub-strokecase0190_ses-0001_dwi.nii/sub-strokecase0190_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0191/ses-0001/dwi/sub-strokecase0191_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0191/ses-0001/dwi/sub-strokecase0191_ses-0001_dwi.nii/sub-strokecase0191_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0192/ses-0001/dwi/sub-strokecase0192_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0192/ses-0001/dwi/sub-strokecase0192_ses-0001_dwi.nii/sub-strokecase0192_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0193/ses-0001/dwi/sub-strokecase0193_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0193/ses-0001/dwi/sub-strokecase0193_ses-0001_dwi.nii/sub-strokecase0193_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0194/ses-0001/dwi/sub-strokecase0194_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0194/ses-0001/dwi/sub-strokecase0194_ses-0001_dwi.nii/sub-strokecase0194_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0195/ses-0001/dwi/sub-strokecase0195_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0195/ses-0001/dwi/sub-strokecase0195_ses-0001_dwi.nii/sub-strokecase0195_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0196/ses-0001/dwi/sub-strokecase0196_ses-0001_dwi.nii/sub-strokeperf0062_ses-20180112_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0196/ses-0001/dwi/sub-strokecase0196_ses-0001_dwi.nii/sub-strokecase0196_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0197/ses-0001/dwi/sub-strokecase0197_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0197/ses-0001/dwi/sub-strokecase0197_ses-0001_dwi.nii/sub-strokecase0197_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0198/ses-0001/dwi/sub-strokecase0198_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0198/ses-0001/dwi/sub-strokecase0198_ses-0001_dwi.nii/sub-strokecase0198_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0199/ses-0001/dwi/sub-strokecase0199_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0199/ses-0001/dwi/sub-strokecase0199_ses-0001_dwi.nii/sub-strokecase0199_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0200/ses-0001/dwi/sub-strokecase0200_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0200/ses-0001/dwi/sub-strokecase0200_ses-0001_dwi.nii/sub-strokecase0200_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0201/ses-0001/dwi/sub-strokecase0201_ses-0001_dwi.nii/sub-strokeperf0067_ses-20170915_skull-stripped_sequ-6_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0201/ses-0001/dwi/sub-strokecase0201_ses-0001_dwi.nii/sub-strokecase0201_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0202/ses-0001/dwi/sub-strokecase0202_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0202/ses-0001/dwi/sub-strokecase0202_ses-0001_dwi.nii/sub-strokecase0202_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0203/ses-0001/dwi/sub-strokecase0203_ses-0001_dwi.nii/sub-basilarstroke0066_ses-20200305_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0203/ses-0001/dwi/sub-strokecase0203_ses-0001_dwi.nii/sub-strokecase0203_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0204/ses-0001/dwi/sub-strokecase0204_ses-0001_dwi.nii/sub-strokeperf0079_ses-20190102_ornt-iso_skull-stripped_sequ-307_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0204/ses-0001/dwi/sub-strokecase0204_ses-0001_dwi.nii/sub-strokecase0204_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0205/ses-0001/dwi/sub-strokecase0205_ses-0001_dwi.nii/sub-basilarstroke0079_ses-20200702_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0205/ses-0001/dwi/sub-strokecase0205_ses-0001_dwi.nii/sub-strokecase0205_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0206/ses-0001/dwi/sub-strokecase0206_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0206/ses-0001/dwi/sub-strokecase0206_ses-0001_dwi.nii/sub-strokecase0206_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0207/ses-0001/dwi/sub-strokecase0207_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0207/ses-0001/dwi/sub-strokecase0207_ses-0001_dwi.nii/sub-strokecase0207_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0208/ses-0001/dwi/sub-strokecase0208_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0208/ses-0001/dwi/sub-strokecase0208_ses-0001_dwi.nii/sub-strokecase0208_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0209/ses-0001/dwi/sub-strokecase0209_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0209/ses-0001/dwi/sub-strokecase0209_ses-0001_dwi.nii/sub-strokecase0209_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0210/ses-0001/dwi/sub-strokecase0210_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0210/ses-0001/dwi/sub-strokecase0210_ses-0001_dwi.nii/sub-strokecase0210_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0211/ses-0001/dwi/sub-strokecase0211_ses-0001_dwi.nii/sub-strokeperf0083_ses-20200415_ornt-iso_skull-stripped_sequ-503_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0211/ses-0001/dwi/sub-strokecase0211_ses-0001_dwi.nii/sub-strokecase0211_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0212/ses-0001/dwi/sub-strokecase0212_ses-0001_dwi.nii/sub-basilarstroke0078_ses-20200623_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0212/ses-0001/dwi/sub-strokecase0212_ses-0001_dwi.nii/sub-strokecase0212_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0213/ses-0001/dwi/sub-strokecase0213_ses-0001_dwi.nii/sub-basilarstroke0081_ses-20200906_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0213/ses-0001/dwi/sub-strokecase0213_ses-0001_dwi.nii/sub-strokecase0213_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0214/ses-0001/dwi/sub-strokecase0214_ses-0001_dwi.nii/sub-strokeperf0091_ses-20200323_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0214/ses-0001/dwi/sub-strokecase0214_ses-0001_dwi.nii/sub-strokecase0214_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0215/ses-0001/dwi/sub-strokecase0215_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0215/ses-0001/dwi/sub-strokecase0215_ses-0001_dwi.nii/sub-strokecase0215_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0216/ses-0001/dwi/sub-strokecase0216_ses-0001_dwi.nii/sub-strokeperf0085_ses-20170605_ornt-iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0216/ses-0001/dwi/sub-strokecase0216_ses-0001_dwi.nii/sub-strokecase0216_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0217/ses-0001/dwi/sub-strokecase0217_ses-0001_dwi.nii/sub-basilarstroke0084_ses-20201203_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0217/ses-0001/dwi/sub-strokecase0217_ses-0001_dwi.nii/sub-strokecase0217_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0218/ses-0001/dwi/sub-strokecase0218_ses-0001_dwi.nii/sub-basilarstroke0006_ses-20170408_ornt-2iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0218/ses-0001/dwi/sub-strokecase0218_ses-0001_dwi.nii/sub-strokecase0218_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0219/ses-0001/dwi/sub-strokecase0219_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0219/ses-0001/dwi/sub-strokecase0219_ses-0001_dwi.nii/sub-strokecase0219_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0220/ses-0001/dwi/sub-strokecase0220_ses-0001_dwi.nii/sub-strokeperf0080_ses-20190515_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0220/ses-0001/dwi/sub-strokecase0220_ses-0001_dwi.nii/sub-strokecase0220_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0221/ses-0001/dwi/sub-strokecase0221_ses-0001_dwi.nii/sub-basilarstroke0083_ses-20201030_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0221/ses-0001/dwi/sub-strokecase0221_ses-0001_dwi.nii/sub-strokecase0221_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0222/ses-0001/dwi/sub-strokecase0222_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0222/ses-0001/dwi/sub-strokecase0222_ses-0001_dwi.nii/sub-strokecase0222_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0223/ses-0001/dwi/sub-strokecase0223_ses-0001_dwi.nii/sub-strokeperf0063_ses-20190630_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0223/ses-0001/dwi/sub-strokecase0223_ses-0001_dwi.nii/sub-strokecase0223_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0224/ses-0001/dwi/sub-strokecase0224_ses-0001_dwi.nii/sub-basilarstroke0096_ses-20161228_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0224/ses-0001/dwi/sub-strokecase0224_ses-0001_dwi.nii/sub-strokecase0224_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0225/ses-0001/dwi/sub-strokecase0225_ses-0001_dwi.nii/sub-strokeperf0055_ses-20190908_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0225/ses-0001/dwi/sub-strokecase0225_ses-0001_dwi.nii/sub-strokecase0225_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0226/ses-0001/dwi/sub-strokecase0226_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0226/ses-0001/dwi/sub-strokecase0226_ses-0001_dwi.nii/sub-strokecase0226_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0227/ses-0001/dwi/sub-strokecase0227_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0227/ses-0001/dwi/sub-strokecase0227_ses-0001_dwi.nii/sub-strokecase0227_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0228/ses-0001/dwi/sub-strokecase0228_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0228/ses-0001/dwi/sub-strokecase0228_ses-0001_dwi.nii/sub-strokecase0228_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0229/ses-0001/dwi/sub-strokecase0229_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0229/ses-0001/dwi/sub-strokecase0229_ses-0001_dwi.nii/sub-strokecase0229_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0230/ses-0001/dwi/sub-strokecase0230_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0230/ses-0001/dwi/sub-strokecase0230_ses-0001_dwi.nii/sub-strokecase0230_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0231/ses-0001/dwi/sub-strokecase0231_ses-0001_dwi.nii/sub-basilarstroke0070_ses-20200314_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0231/ses-0001/dwi/sub-strokecase0231_ses-0001_dwi.nii/sub-strokecase0231_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0232/ses-0001/dwi/sub-strokecase0232_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0232/ses-0001/dwi/sub-strokecase0232_ses-0001_dwi.nii/sub-strokecase0232_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0233/ses-0001/dwi/sub-strokecase0233_ses-0001_dwi.nii/sub-basilarstroke0087_ses-20201230_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0233/ses-0001/dwi/sub-strokecase0233_ses-0001_dwi.nii/sub-strokecase0233_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0234/ses-0001/dwi/sub-strokecase0234_ses-0001_dwi.nii/sub-basilarstroke0074_ses-20200509_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0234/ses-0001/dwi/sub-strokecase0234_ses-0001_dwi.nii/sub-strokecase0234_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0235/ses-0001/dwi/sub-strokecase0235_ses-0001_dwi.nii/sub-basilarstroke0085_ses-20201207_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0235/ses-0001/dwi/sub-strokecase0235_ses-0001_dwi.nii/sub-strokecase0235_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0236/ses-0001/dwi/sub-strokecase0236_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0236/ses-0001/dwi/sub-strokecase0236_ses-0001_dwi.nii/sub-strokecase0236_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0237/ses-0001/dwi/sub-strokecase0237_ses-0001_dwi.nii/sub-strokeperf0087_ses-20190905_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0237/ses-0001/dwi/sub-strokecase0237_ses-0001_dwi.nii/sub-strokecase0237_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0238/ses-0001/dwi/sub-strokecase0238_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0238/ses-0001/dwi/sub-strokecase0238_ses-0001_dwi.nii/sub-strokecase0238_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0239/ses-0001/dwi/sub-strokecase0239_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0239/ses-0001/dwi/sub-strokecase0239_ses-0001_dwi.nii/sub-strokecase0239_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0240/ses-0001/dwi/sub-strokecase0240_ses-0001_dwi.nii/sub-strokeperf0064_ses-20170529_ornt-iso_skull-stripped_sequ-407_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0240/ses-0001/dwi/sub-strokecase0240_ses-0001_dwi.nii/sub-strokecase0240_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0241/ses-0001/dwi/sub-strokecase0241_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0241/ses-0001/dwi/sub-strokecase0241_ses-0001_dwi.nii/sub-strokecase0241_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0242/ses-0001/dwi/sub-strokecase0242_ses-0001_dwi.nii/sub-basilarstroke0076_ses-20200607_ornt-iso_skull-stripped_sequ-203_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0242/ses-0001/dwi/sub-strokecase0242_ses-0001_dwi.nii/sub-strokecase0242_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0243/ses-0001/dwi/sub-strokecase0243_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0243/ses-0001/dwi/sub-strokecase0243_ses-0001_dwi.nii/sub-strokecase0243_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0244/ses-0001/dwi/sub-strokecase0244_ses-0001_dwi.nii/sub-basilarstroke0088_ses-20210107_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0244/ses-0001/dwi/sub-strokecase0244_ses-0001_dwi.nii/sub-strokecase0244_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0245/ses-0001/dwi/sub-strokecase0245_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0245/ses-0001/dwi/sub-strokecase0245_ses-0001_dwi.nii/sub-strokecase0245_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0246/ses-0001/dwi/sub-strokecase0246_ses-0001_dwi.nii/sub-strokeperf0061_ses-20190728_ornt-iso_skull-stripped_sequ-303_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0246/ses-0001/dwi/sub-strokecase0246_ses-0001_dwi.nii/sub-strokecase0246_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0247/ses-0001/dwi/sub-strokecase0247_ses-0001_dwi.nii/sub-strokeperf0057_ses-20191209_ornt-iso_skull-stripped_sequ-403_dwi.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0247/ses-0001/dwi/sub-strokecase0247_ses-0001_dwi.nii/sub-strokecase0247_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0248/ses-0001/dwi/sub-strokecase0248_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0248/ses-0001/dwi/sub-strokecase0248_ses-0001_dwi.nii/sub-strokecase0248_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0249/ses-0001/dwi/sub-strokecase0249_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0249/ses-0001/dwi/sub-strokecase0249_ses-0001_dwi.nii/sub-strokecase0249_ses-0001_dwi.nii",
     "modal": "DWI"
   },
   {
-    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0250/ses-0001/dwi/sub-strokecase0250_ses-0001_dwi.nii/dwi_skull-stripped.nii",
+    "image": "/home/jason/autorg/dataset/ISLES-2022/ISLES-2022/sub-strokecase0250/ses-0001/dwi/sub-strokecase0250_ses-0001_dwi.nii/sub-strokecase0250_ses-0001_dwi.nii",
     "modal": "DWI"
   }
 ]

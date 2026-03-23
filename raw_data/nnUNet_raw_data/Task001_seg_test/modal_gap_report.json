@@ -1,0 +1,35 @@
+{
+  "included_modal_counts": {
+    "T1WI": 2131,
+    "T2FLAIR": 2156,
+    "T2WI": 2181,
+    "ADC": 250,
+    "DWI": 250
+  },
+  "eligible_by_dataset": {
+    "BraTS2021_Training_Data": 3753,
+    "BraTS2020_ValidationData": 375,
+    "ISLES-2022": 500,
+    "BraTS2020_TrainingData": 1107,
+    "BraTS-MEN-Train": 888,
+    "MSLesSeg Dataset": 345
+  },
+  "excluded_missing_label1_by_dataset": {
+    "BraTS2021_Training_Data": 0,
+    "BraTS2020_ValidationData": 0,
+    "ISLES-2022": 0,
+    "BraTS2020_TrainingData": 0,
+    "BraTS-MEN-Train": 0,
+    "MSLesSeg Dataset": 0
+  },
+  "excluded_missing_label2_by_dataset": {
+    "BraTS2021_Training_Data": 0,
+    "BraTS2020_ValidationData": 0,
+    "ISLES-2022": 0,
+    "BraTS2020_TrainingData": 0,
+    "BraTS-MEN-Train": 0,
+    "MSLesSeg Dataset": 0
+  },
+  "missing_eligible_by_modal": {},
+  "missing_examples_by_modal": {}
+}

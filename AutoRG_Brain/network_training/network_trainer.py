@@ -631,8 +631,12 @@ class NetworkTrainer(object):
                     self.val_eval_criterion_MA_ana[v] = self.val_eval_criterion_alpha * self.val_eval_criterion_MA_ana[v] + (
                             1 - self.val_eval_criterion_alpha) * \
                                                 self.all_val_eval_metrics_ana[v][-1]
-        self.val_eval_criterion_MA['ab'] = np.mean([self.val_eval_criterion_MA_ab[v] for v in self.val_eval_criterion_MA_ab])
-        self.val_eval_criterion_MA['ana'] = np.mean([self.val_eval_criterion_MA_ana[v] for v in self.val_eval_criterion_MA_ana])
+        valid_ab = [self.val_eval_criterion_MA_ab[v] for v in self.val_eval_criterion_MA_ab
+                if self.val_eval_criterion_MA_ab[v] is not None]
+        valid_ana = [self.val_eval_criterion_MA_ana[v] for v in self.val_eval_criterion_MA_ana
+                 if self.val_eval_criterion_MA_ana[v] is not None]
+        self.val_eval_criterion_MA['ab'] = float(np.mean(valid_ab)) if len(valid_ab) > 0 else 0.0
+        self.val_eval_criterion_MA['ana'] = float(np.mean(valid_ana)) if len(valid_ana) > 0 else 0.0
         self.val_eval_criterion_MA['both'] = self.val_eval_criterion_MA['ab']+self.val_eval_criterion_MA['ana']
         
     def manage_patience_six_pub(self):

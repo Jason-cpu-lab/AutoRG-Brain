@@ -47,9 +47,22 @@ def strip_nii(name: str) -> str:
     return name
 
 
+def strip_ana_suffix(stem: str) -> str:
+    if stem.endswith("_ana_mask"):
+        return stem[: -len("_ana_mask")]
+    if stem.endswith("_ana"):
+        return stem[: -len("_ana")]
+    return stem
+
+
 def norm_stem(stem: str) -> str:
     s = stem.lower()
     return re.sub(r"(_ab_mask|_ana_mask|_ab|_ana)$", "", s)
+
+
+def extract_case_id(stem: str) -> str:
+    s = norm_stem(stem)
+    return re.sub(r"([_-])(flair|t2f|t2flair|t2w|t2wi|t2|t1n|t1wi|t1|dwi|adc)$", "", s, flags=re.I)
 
 
 def detect_modal(filename_stem: str):
@@ -73,6 +86,11 @@ def detect_modal(filename_stem: str):
 def build_pseudo_maps(pseudo_roots):
     ab_by_norm = {}
     ana_by_norm = {}
+    ab_by_modal = {k: {} for k in MODAL_KEYS}
+    ana_by_modal = {k: {} for k in MODAL_KEYS}
+    ana_exact_by_modal = {k: {} for k in MODAL_KEYS}
+    ab_by_modal_case = {k: {} for k in MODAL_KEYS}
+    ana_by_modal_case = {k: {} for k in MODAL_KEYS}
 
     for root in pseudo_roots:
         if not root.exists():
@@ -86,13 +104,31 @@ def build_pseudo_maps(pseudo_roots):
 
             stem = strip_nii(p.name)
             key = norm_stem(stem)
+            case_id = extract_case_id(stem)
+            file_modal = None
+
+            parent_modal = p.parent.name.upper()
+            if parent_modal in MODAL_KEYS:
+                file_modal = parent_modal
+            else:
+                file_modal = detect_modal(stem)
 
             if "_ab_mask" in nm or nm.endswith("_ab.nii.gz") or nm.endswith("_ab.nii"):
                 ab_by_norm.setdefault(key, str(p))
+                if file_modal in ab_by_modal:
+                    ab_by_modal[file_modal].setdefault(key, str(p))
+                    if case_id:
+                        ab_by_modal_case[file_modal].setdefault(case_id, str(p))
             if "_ana_mask" in nm or nm.endswith("_ana.nii.gz") or nm.endswith("_ana.nii"):
                 ana_by_norm.setdefault(key, str(p))
+                if file_modal in ana_by_modal:
+                    ana_by_modal[file_modal].setdefault(key, str(p))
+                    ana_stem = strip_ana_suffix(stem)
+                    ana_exact_by_modal[file_modal].setdefault(ana_stem, str(p))
+                    if case_id:
+                        ana_by_modal_case[file_modal].setdefault(case_id, str(p))
 
-    return ab_by_norm, ana_by_norm
+    return ab_by_norm, ana_by_norm, ab_by_modal, ana_by_modal, ana_exact_by_modal, ab_by_modal_case, ana_by_modal_case
 
 
 def find_local_gt_for_image(img_path: Path):
@@ -169,12 +205,6 @@ def pseudo_lookup(map_dict, image_stem: str):
         if k.startswith(key + "_") or key.startswith(k + "_"):
             return v
 
-    # Last resort: patient-id prefix
-    pid = key.split("_")[0]
-    for k, v in map_dict.items():
-        if k.split("_")[0] == pid:
-            return v
-
     return None
 
 
@@ -209,6 +239,39 @@ def infer_isles_subject_session(img_path: Path, stem: str):
     return None, None
 
 
+def expand_lookup_stems(stems, modal):
+    alias_by_modal = {
+        "T1WI": ["t1", "t1n", "t1wi"],
+        "T2WI": ["t2", "t2w", "t2wi"],
+        "T2FLAIR": ["flair", "t2f", "t2flair"],
+        "DWI": ["dwi"],
+        "ADC": ["adc"],
+    }
+    aliases = alias_by_modal.get(modal, [])
+    out = []
+    seen = set()
+
+    for s in stems:
+        if not s:
+            continue
+        if s not in seen:
+            out.append(s)
+            seen.add(s)
+
+        low = s.lower()
+        for a in aliases:
+            for sep in ["_", "-"]:
+                token = f"{sep}{a}"
+                if low.endswith(token):
+                    prefix = s[: -len(token)]
+                    for b in aliases:
+                        cand = f"{prefix}{sep}{b}"
+                        if cand not in seen:
+                            out.append(cand)
+                            seen.add(cand)
+    return out
+
+
 def pseudo_lookup_candidates(map_dict, stems):
     seen = set()
     for s in stems:
@@ -222,7 +285,15 @@ def pseudo_lookup_candidates(map_dict, stems):
 
 
 def build_entries(data_root: Path, pseudo_roots):
-    ab_map, ana_map = build_pseudo_maps(pseudo_roots)
+    (
+        ab_map,
+        ana_map,
+        ab_map_by_modal,
+        ana_map_by_modal,
+        ana_exact_by_modal,
+        ab_map_by_modal_case,
+        ana_map_by_modal_case,
+    ) = build_pseudo_maps(pseudo_roots)
 
     training = []
     stats = {
@@ -291,8 +362,17 @@ def build_entries(data_root: Path, pseudo_roots):
             if subj and ses:
                 lookup_stems.extend([f"{subj}_{ses}", f"{subj}_{ses}_{modal.lower()}"])
 
+        lookup_stems = expand_lookup_stems(lookup_stems, modal)
+
         if label2 is None:
-            label2 = pseudo_lookup_candidates(ab_map, lookup_stems)
+            modal_ab_map = ab_map_by_modal.get(modal, {})
+            label2 = pseudo_lookup_candidates(modal_ab_map, lookup_stems)
+            if label2 is None:
+                case_ids = [extract_case_id(s) for s in lookup_stems if s]
+                for case_id in case_ids:
+                    if case_id and case_id in ab_map_by_modal_case.get(modal, {}):
+                        label2 = ab_map_by_modal_case[modal][case_id]
+                        break
 
         # label1 (anatomy): local ana first, then pseudo fallback
         label1 = None
@@ -308,7 +388,10 @@ def build_entries(data_root: Path, pseudo_roots):
                 label1_source = "local"
                 break
         if label1 is None:
-            label1 = pseudo_lookup_candidates(ana_map, lookup_stems)
+            # Strict rule for label1:
+            # only accept ana masks whose basename exactly matches image stem,
+            # i.e., <image_stem>_ana_mask.nii.gz (or _ana.nii.gz legacy).
+            label1 = ana_exact_by_modal.get(modal, {}).get(stem)
             if label1 is not None:
                 label1_source = "pseudo"
 

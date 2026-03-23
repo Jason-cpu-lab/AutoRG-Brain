@@ -15,6 +15,7 @@
 
 from collections import OrderedDict
 from typing import Tuple
+from pathlib import Path
 import numpy as np
 import torch
 from sklearn.model_selection import KFold
@@ -110,7 +111,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.online_eval_fp_ab = []
         self.online_eval_fn_ab = []
 
-        if not os.path.exists(train_file):
+        if train_file is not None and (not os.path.exists(train_file)):
             train_file = None
 
         self.train_file = json.load(open(train_file,'r')) if train_file is not None else None
@@ -144,7 +145,8 @@ class nnUNetTrainerV2(nnUNetTrainer):
             self.best_val_eval_criterion_MA = {'ab':None,'ana':None,'both':None}
 
         self.val_every = 10
-        self.val_choose_num = json.load(open('utils_file/val_choose_number.json','r'))
+        val_choose_path = Path(__file__).resolve().parents[1] / 'utils_file' / 'val_choose_number.json'
+        self.val_choose_num = json.load(open(val_choose_path, 'r'))
 
         self.only_ana = only_ana
         self.abnormal_type = abnormal_type
@@ -232,7 +234,12 @@ class nnUNetTrainerV2(nnUNetTrainer):
             self.process_plans(self.plans)
             self.batch_size = self.plans['plans_per_stage'][self.stage].get('batch_size', self.batch_size)
             if self.network_type in ("medsam2", "sam2"):
-                self.batch_size = 8
+                medsam2_batch_size = os.environ.get("AUTORG_MEDSAM2_BATCH_SIZE", "1")
+                try:
+                    self.batch_size = max(1, int(medsam2_batch_size))
+                except ValueError:
+                    self.print_to_log_file(f"Invalid AUTORG_MEDSAM2_BATCH_SIZE={medsam2_batch_size}, fallback to 1")
+                    self.batch_size = 1
 
             self.setup_DA_params()
 

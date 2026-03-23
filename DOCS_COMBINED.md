@@ -235,3 +235,166 @@ python -m experiment_planning.nnUNet_plan_and_preprocess_llm -t 1 --verify_datas
 - Training path remains operational with known non-blocking warnings.
 
 ---
+
+## 8) Working-Tree Change Log (Uncommitted, 2026-03-23)
+
+This section records the **current local uncommitted changes** shown by `git status`.
+
+### 8.1 Data loader hardening and synthesis robustness
+
+#### `AutoRG_Brain/dataset/dataset_loading.py`
+
+- Added atomic `.npy` creation in `convert_to_npy` (write temp file then `os.replace`) to reduce truncated cache artifacts.
+- Added `_load_case_array(...)` helper:
+  - Prefer `.npy` memmap load.
+  - On memmap failure (including `mmap length is greater than file size`), warn, remove corrupted `.npy`, and fallback to `.npz`.
+- Replaced direct `np.load(... .npy)` call sites in `determine_shapes` and `generate_train_batch` with `_load_case_array(...)`.
+- Improved modality bucket parsing:
+  - Parse modality from tokenized ID parts (supports explicit tags like `dwi/adc/flair/t2/t1`).
+  - Keep legacy prefix fallback (`a/b/c/d/e`) for compatibility.
+- Added `_warned_no_fg_cases` guard to avoid repeated spam for foreground-missing cases.
+- Wrapped abnormal synthesis retries with warning filtering for noisy runtime warnings.
+- Added retry context reporting after repeated synthesis failures.
+
+#### `AutoRG_Brain/dataset/dataset_loading_llm.py`
+
+- `convert_to_npy` now writes `.npy` atomically via temp file + replace.
+
+#### `AutoRG_Brain/dataset/utils.py`
+
+- Added `_minimal_fallback_lesion(...)`:
+  - Creates a small valid fallback lesion mask when synthesis fails to produce enough lesion voxels.
+  - Uses anatomy foreground preference with intensity blending by modality.
+- Updated `SynthesisTumor(...)` behavior:
+  - Retry loop now continues on exception (no hard raise path on first failure).
+  - If total abnormal mask is too small, uses fallback lesion synthesis.
+  - Ensures `xyzs` is always non-empty with a center fallback.
+
+### 8.2 Dataset JSON generation logic changes
+
+#### `AutoRG_Brain/generate_seg_json.py`
+
+- Added helpers for stricter/cleaner stem handling:
+  - `strip_ana_suffix(...)`
+  - `extract_case_id(...)`
+  - `expand_lookup_stems(...)` with modality alias expansion.
+- `build_pseudo_maps(...)` now builds extra modality-specific and case-id-specific lookup maps:
+  - `ab_by_modal`, `ana_by_modal`, `ana_exact_by_modal`, `ab_by_modal_case`, `ana_by_modal_case`.
+- Label lookup logic tightened:
+  - `label2` (abnormal) now prefers modal-specific maps and can fallback through modal case-id map.
+  - `label1` (anatomy) pseudo fallback now enforces exact basename matching (`<image_stem>_ana_mask` / legacy `_ana`) via `ana_exact_by_modal`.
+- Removed broad patient-prefix fallback in generic pseudo lookup to reduce false matches.
+
+### 8.3 Trainer stability/config behavior
+
+#### `AutoRG_Brain/network_training/network_trainer.py`
+
+- Moving-average aggregation now ignores `None` entries:
+  - Computes MA using only valid values for anatomy/abnormal channels.
+  - Falls back to `0.0` if no valid metric entries are available.
+
+#### `AutoRG_Brain/network_training/nnUNetTrainerV2_six_pub_seg.py`
+
+- Added `Path` usage for robust project-relative file loading.
+- Safe handling for optional `train_file` path (checks only when not `None`).
+- `val_choose_number.json` path resolved relative to trainer file location (instead of fragile cwd-relative path).
+- For `network_type in {medsam2, sam2}`:
+  - Batch size now comes from env var `AUTORG_MEDSAM2_BATCH_SIZE` (default `1`).
+  - Invalid env var values log warning and fallback to `1`.
+
+### 8.4 Integration notes updates
+
+#### `MEDSAM2_INTEGRATION.md`
+
+- Added 2026-03-22 notes about:
+  - New ISLES DWI mask generation script.
+  - `generate_seg_json.py` ISLES modal selection update.
+- Added 2026-03-23 notes about:
+  - Atomic unpack writes.
+  - Corrupted `.npy` fallback handling for dataloader memmap failures.
+
+### 8.5 Generated/updated dataset artifacts
+
+#### `raw_data/nnUNet_raw_data/Task001_seg_test/case_dic.json`
+
+- Modality list counts changed:
+  - `ADC`: `199 -> 250`
+  - `DWI`: `199 -> 250`
+  - `T2FLAIR`: `1860 -> 2156`
+  - `T2WI`: `1885 -> 2181`
+  - (`T1WI` list unchanged in this diff summary script output)
+
+#### `raw_data/nnUNet_raw_data/Task001_seg_test/dataset.json`
+
+- Dataset structure remains standard nnU-Net style.
+- Current values include:
+  - `numTraining: 6968`
+  - `numTest: 0`
+  - `training_len: 6968`
+  - `test_len: 0`
+
+#### `raw_data/nnUNet_raw_data/Task001_seg_test/generation_audit.json`
+
+- `global_summary` changed:
+  - `total_images_scanned: 11540 -> 12648`
+  - `eligible_modal_images: 6968 -> 6968` (unchanged)
+  - `included: 6376 -> 6968`
+  - `label2_gt: 5998 -> 6593`
+  - `label2_pseudo: 378 -> 375`
+  - `label1_local: 0 -> 1107`
+  - `label1_pseudo: 6376 -> 5861`
+  - `excluded_missing_label1: 592 -> 0`
+  - `excluded_missing_label2: 0 -> 0` (unchanged)
+- `dataset_entries` notable change:
+  - `BraTS-MEN-Train: 296 -> 888`
+  - Other listed dataset counts unchanged in this comparison.
+
+#### `raw_data/nnUNet_raw_data/Task001_seg_test/test_file.json`
+
+- Structure changed from prior format (`training` + `numTraining`) to:
+  - `training`: list of 6968 case-id strings
+  - `validation`: object with `{"test": []}`
+- `numTraining` key removed in current file.
+
+#### `raw_data/nnUNet_raw_data/infer_jobs/isles2022_dwi.json`
+
+- Still 250 entries, all with `modal: "DWI"`.
+- Image paths normalized/standardized for all entries:
+  - `image_path_changes_at_same_index: 250 / 250`
+  - Standardized basename pattern count: `250 / 250`.
+
+### 8.6 New untracked files
+
+#### `AutoRG_Brain/generate_isles2022_dwi_masks.py`
+
+- New utility script to generate ISLES-2022 DWI `_ab` and `_ana` masks via `inferenceSdk.SegModel`.
+- Supports both direct DWI NIfTI files and directory-wrapped `*_dwi.nii/<inner>.nii` layouts.
+- Writes outputs to configurable output dir and emits manifest:
+  - `isles2022_dwi_masks_manifest.json`.
+
+#### `raw_data/nnUNet_raw_data/Task001_seg_test/modal_gap_report.json`
+
+- New summary report with:
+  - Included modal counts (`T1WI/T2FLAIR/T2WI/ADC/DWI`)
+  - Eligible counts by dataset
+  - Missing-label exclusion counts (all zero in current snapshot)
+  - Empty missing-example maps.
+
+#### `train_medsam2.log`
+
+- New captured training log artifact (`312` lines).
+- Log includes epoch progression and crash trace showing historical root cause:
+  - `ValueError: mmap length is greater than file size`
+  - followed by worker failure wrapper:
+    - `RuntimeError: One or more background workers are no longer alive...`
+
+### 8.7 Diffstat snapshot for modified tracked files
+
+- `12 files changed, 28178 insertions(+), 14055 deletions(-)`
+- Largest diffs are data artifacts:
+  - `generation_audit.json`
+  - `dataset.json`
+  - `test_file.json`
+  - `case_dic.json`
+
+---

@@ -50,7 +50,11 @@ def convert_to_npy(args):
     if not isfile(npz_file[:-3] + "npy"):
         print("unpack",npz_file.split('/')[-1])
         a = np.load(npz_file)[key]
-        np.save(npz_file[:-3] + "npy", a)
+        target_npy = npz_file[:-3] + "npy"
+        tmp_npy = target_npy + ".tmp"
+        with open(tmp_npy, "wb") as f:
+            np.save(f, a)
+        os.replace(tmp_npy, target_npy)
 
 
 def save_as_npz(args):

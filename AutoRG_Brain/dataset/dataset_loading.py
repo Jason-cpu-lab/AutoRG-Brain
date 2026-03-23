@@ -15,6 +15,7 @@
 from collections import OrderedDict
 import numpy as np
 from multiprocessing import Pool
+import re
 
 from batchgenerators.dataloading.data_loader import SlimDataLoaderBase
 
@@ -28,6 +29,7 @@ import SimpleITK as sitk
 
 import random
 import json
+import warnings
 
 
 def get_case_identifiers(folder):
@@ -49,7 +51,29 @@ def convert_to_npy(args):
         npz_file, key = args
     if not isfile(npz_file[:-3] + "npy"):
         a = np.load(npz_file)[key]
-        np.save(npz_file[:-3] + "npy", a)
+        target_npy = npz_file[:-3] + "npy"
+        tmp_npy = target_npy + ".tmp"
+        with open(tmp_npy, "wb") as f:
+            np.save(f, a)
+        os.replace(tmp_npy, target_npy)
+
+
+def _load_case_array(data_file, memmap_mode="r"):
+    npy_file = data_file[:-4] + ".npy"
+    if isfile(npy_file):
+        try:
+            return np.load(npy_file, memmap_mode)
+        except Exception as e:
+            err = str(e)
+            if "mmap length is greater than file size" in err:
+                print(f"[DataLoader3D] WARNING: corrupted npy detected, removing and falling back to npz: {npy_file}")
+                try:
+                    os.remove(npy_file)
+                except OSError:
+                    pass
+            else:
+                print(f"[DataLoader3D] WARNING: failed to load npy ({npy_file}), fallback to npz. reason={err}")
+    return np.load(data_file)['data']
 
 
 def save_as_npz(args):
@@ -199,28 +223,36 @@ class DataLoader3D(SlimDataLoaderBase):
         self.list_of_keys = list(self._data.keys()) # self._data = data
         def _modal_key(k):
             kl = k.lower()
-            if kl.endswith('_dwi'):
-                return 'a'
-            elif kl.endswith('_t1wi') or kl.endswith('_t1ce') or kl.endswith('_t1'):
-                return 'b'
-            elif kl.endswith('_t2wi') or kl.endswith('_t2'):
-                return 'c'
-            elif kl.endswith('_flair') or kl.endswith('_t2flair'):
-                return 'd'
-            elif kl.endswith('_adc'):
-                return 'e'
-            elif kl.startswith('a'):
-                return 'a'
-            elif kl.startswith('b'):
-                return 'b'
-            elif kl.startswith('c'):
-                return 'c'
-            elif kl.startswith('d'):
-                return 'd'
-            elif kl.startswith('e'):
-                return 'e'
-            else:
+            tokens = [tok for tok in re.split(r'[_\-]', kl) if tok]
+            if not tokens:
                 return None
+
+            token_set = set(tokens)
+
+            # prefer explicit modality tags if present anywhere in the id
+            if 'dwi' in token_set:
+                return 'a'
+            if 'adc' in token_set:
+                return 'e'
+            if any(tok in token_set for tok in ('flair', 't2flair', 't2f')):
+                return 'd'
+            if any(tok in token_set for tok in ('t2wi', 't2')):
+                return 'c'
+            if any(tok in token_set for tok in ('t1wi', 't1ce', 't1', 't1n')):
+                return 'b'
+
+            # backward-compatible fallback for legacy prefixes
+            if kl.startswith('a'):
+                return 'a'
+            if kl.startswith('b'):
+                return 'b'
+            if kl.startswith('c'):
+                return 'c'
+            if kl.startswith('d'):
+                return 'd'
+            if kl.startswith('e'):
+                return 'e'
+            return None
         self.list_of_keys_modal = {'a': [], 'b': [], 'c': [], 'd': [], 'e': []}
         for k in self.list_of_keys:
             mk = _modal_key(k)
@@ -249,6 +281,7 @@ class DataLoader3D(SlimDataLoaderBase):
         self.modal_dic = {'a':'DWI','b':'T1WI','c':'T2WI','d':'T2FLAIR','e':'ADC'}
 
         self.abnormal_type = abnormal_type
+        self._warned_no_fg_cases = set()
 
     def get_do_oversample(self, batch_idx):
         return not batch_idx < round(self.batch_size * (1 - self.oversample_foreground_percent))
@@ -260,10 +293,7 @@ class DataLoader3D(SlimDataLoaderBase):
             num_seg = 1
 
         k = list(self._data.keys())[0]
-        if isfile(self._data[k]['data_file'][:-4] + ".npy"):
-            case_all_data = np.load(self._data[k]['data_file'][:-4] + ".npy", self.memmap_mode)
-        else:
-            case_all_data = np.load(self._data[k]['data_file'])['data']
+        case_all_data = _load_case_array(self._data[k]['data_file'], self.memmap_mode)
         num_color_channels = case_all_data.shape[0] - 1
         data_shape = (self.batch_size, 1, *self.patch_size)
         seg_shape = (self.batch_size, num_seg, *self.patch_size)
@@ -310,10 +340,7 @@ class DataLoader3D(SlimDataLoaderBase):
 
             # cases are stored as npz, but we require unpack_dataset to be run. This will decompress them into npy
             # which is much faster to access
-            if isfile(self._data[i]['data_file'][:-4] + ".npy"):
-                case_all_data_origin = np.load(self._data[i]['data_file'][:-4] + ".npy", self.memmap_mode) # case_all_data.shape 2,159,198,182/ 2 155,198,161
-            else:
-                case_all_data_origin = np.load(self._data[i]['data_file'])['data']
+            case_all_data_origin = _load_case_array(self._data[i]['data_file'], self.memmap_mode) # case_all_data.shape 2,159,198,182/ 2 155,198,161
             
             case_all_data = case_all_data_origin.copy()
             
@@ -328,18 +355,26 @@ class DataLoader3D(SlimDataLoaderBase):
                 
                 ### gen abnormal ###
                 cnt = 0
+                last_retry_exception = None
                 while(flag == 0 and cnt<15):
                     try:
-                        if self.abnormal_type == "intense" or (self.abnormal_type == "mix" and np.random.rand()<0.5):
-                            abnormal_image, seg_from_previous_stage, xyzs = SynthesisTumor_intense(case_all_data[0], anatomy_scan, modal, properties)
-                        else:
-                            abnormal_image, seg_from_previous_stage, xyzs = SynthesisTumor_copypaste(case_all_data[0], anatomy_scan, modal, properties, self.ref_paths, name)
+                        with warnings.catch_warnings():
+                            warnings.filterwarnings("ignore", message="Mean of empty slice.*", category=RuntimeWarning)
+                            warnings.filterwarnings("ignore", message="invalid value encountered in divide.*", category=RuntimeWarning)
+                            if self.abnormal_type == "intense" or (self.abnormal_type == "mix" and np.random.rand()<0.5):
+                                abnormal_image, seg_from_previous_stage, xyzs = SynthesisTumor_intense(case_all_data[0], anatomy_scan, modal, properties)
+                            else:
+                                abnormal_image, seg_from_previous_stage, xyzs = SynthesisTumor_copypaste(case_all_data[0], anatomy_scan, modal, properties, self.ref_paths, name)
                         selected_voxel = random.choice(xyzs)
                         case_all_data[0] = abnormal_image
                         flag = 1
-                    except:
+                    except Exception as err:
                         cnt += 1
-                        print("retry")
+                        last_retry_exception = err
+
+                if flag == 0 and cnt > 0:
+                    print(f"[DataLoader3D] abnormal synthesis fallback for {i} after {cnt} retries"
+                          f" ({type(last_retry_exception).__name__ if last_retry_exception is not None else 'unknown'})")
             
             if flag == 0:
                 seg_from_previous_stage = np.zeros(case_all_data[0].shape)
@@ -356,7 +391,9 @@ class DataLoader3D(SlimDataLoaderBase):
                     # this only happens if some image does not contain foreground voxels at all
                     selected_class = None
                     voxels_of_that_class = None
-                    print('case does not contain any foreground classes', i)
+                    if i not in self._warned_no_fg_cases:
+                        print('case does not contain any foreground classes', i)
+                        self._warned_no_fg_cases.add(i)
                 else:
                     selected_class = np.random.choice(foreground_classes)
                     voxels_of_that_class = properties['class_locations'][selected_class]
