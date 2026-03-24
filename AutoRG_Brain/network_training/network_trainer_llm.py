@@ -374,7 +374,7 @@ class NetworkTrainer(object):
         
         try:
             self.network.load_state_dict(checkpoint['seg_model'])
-        except:
+        except RuntimeError as e:
             new_state_dict = OrderedDict()
             curr_state_dict_keys = list(self.network.state_dict().keys())
             for k, value in checkpoint['seg_model'].items():
@@ -385,7 +385,23 @@ class NetworkTrainer(object):
                     key = 'module.'+key
                 new_state_dict[key] = value
 
-            self.network.load_state_dict(new_state_dict)
+            try:
+                self.network.load_state_dict(new_state_dict)
+            except RuntimeError as e2:
+                err_msg = str(e2)
+                legacy_share_key_mismatch = (
+                    "Missing key(s) in state_dict" in err_msg
+                    and "conv_blocks_context_e" in err_msg
+                    and "Unexpected key(s) in state_dict" not in err_msg
+                )
+                if legacy_share_key_mismatch and not train:
+                    self.print_to_log_file(
+                        "Compatibility fallback: loading legacy shared-encoder SEG checkpoint with strict=False "
+                        "(missing conv_blocks_context_e keys)."
+                    )
+                    self.network.load_state_dict(new_state_dict, strict=False)
+                else:
+                    raise
 
         params = self.llm_model.parameters()
 

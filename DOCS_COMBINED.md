@@ -6,6 +6,47 @@ This is the canonical operational documentation for this repository (except READ
 
 ---
 
+## 9) 2026-03-23 MedSAM2 Hybrid Decoder + Stability Updates
+
+### 9.1 MedSAM2 encoder + nnU-Net-style decoder (implemented)
+
+#### `AutoRG_Brain/network/medsam2_adapter.py`
+
+- Replaced minimal dual 1x1x1 head path with a hybrid architecture:
+  - MedSAM2 (or fallback 3D encoder) feature extraction.
+  - 3D feature adapter (`1x1x1`) into decoder feature space.
+  - Multi-stage context/downsample path using `StackedConvLayers`.
+  - Transposed-conv upsampling path with skip fusion (nnU-Net-style localization path).
+  - Dual segmentation outputs (anatomy + abnormal) at decoder stages.
+- Deep supervision output ordering aligned to nnU-Net convention:
+  - Highest-resolution output first, then progressively lower-resolution outputs.
+- Added `pool_op_kernel_sizes`, `conv_kernel_sizes`, `num_conv_per_stage`, and `max_num_features` adapter args so decoder depth/scales follow the current plan stage.
+- Set `input_shape_must_be_divisible_by` from pooling schedule product for safer shape handling in inference/training paths.
+- Added He initialization pass (`InitWeights_He(1e-2)`) over adapter modules for stable startup.
+
+### 9.2 Trainer integration updates
+
+#### `AutoRG_Brain/network_training/nnUNetTrainerV2_six_pub_seg.py`
+
+- `medsam2` network initialization now passes stage parameters into adapter:
+  - `pool_op_kernel_sizes=self.net_num_pool_op_kernel_sizes`
+  - `conv_kernel_sizes=self.net_conv_kernel_sizes`
+  - `num_conv_per_stage=self.conv_per_stage`
+  - `max_num_features=self.max_num_features`
+- MedSAM2 learning-rate mismatch fixed:
+  - `self.initial_lr` is now `1e-4` for `network_type in {medsam2, sam2}` and `1e-2` otherwise.
+  - AdamW initialization now uses `self.initial_lr` (no hard-coded duplicate value).
+  - This prevents poly-LR update from jumping MedSAM2 runs to `1e-2` unexpectedly.
+- TensorBoard write safety:
+  - Guarded scalar logging with `if self.writer is not None` to avoid runtime exceptions when writer creation fails.
+
+### 9.3 Operational notes
+
+- This update keeps current training loop/loss plumbing unchanged while increasing decoder capacity for anatomy detail recovery.
+- Existing run commands remain valid; no CLI contract changes introduced.
+
+---
+
 ## 1) Current Operational Status
 
 - Local preprocessing command is validated and completes:

@@ -94,7 +94,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         super().__init__(plans_file, fold, output_folder, dataset_directory, batch_dice, stage, unpack_data,
                          deterministic, fp16)
         self.max_num_epochs = 1000
-        self.initial_lr = 1e-2
+        self.initial_lr = 1e-4
         self.deep_supervision_scales = None
         self.ds_loss_weights = None
 
@@ -379,6 +379,11 @@ class nnUNetTrainerV2(nnUNetTrainer):
                             self.net_num_pool_op_kernel_sizes, self.net_conv_kernel_sizes, False, True, True)
         elif self.network_type in ("medsam2", "sam2"):
             medsam2_enable = os.environ.get("AUTORG_USE_MEDSAM2", "0") == "1"
+            max_num_features = getattr(
+                self,
+                "max_num_features",
+                Generic_UNet.MAX_NUM_FILTERS_3D if self.threeD else Generic_UNet.MAX_FILTERS_2D,
+            )
             self.network = MedSAM2SegAdapter(
                 in_channels=self.num_input_channels,
                 num_classes_anatomy=96,
@@ -386,6 +391,10 @@ class nnUNetTrainerV2(nnUNetTrainer):
                 embed_dim=max(64, self.base_num_features),
                 deep_supervision=True,
                 use_medsam2_encoder=medsam2_enable,
+                pool_op_kernel_sizes=self.net_num_pool_op_kernel_sizes,
+                conv_kernel_sizes=self.net_conv_kernel_sizes,
+                num_conv_per_stage=self.conv_per_stage,
+                max_num_features=max_num_features,
             )
             self.print_to_log_file(f"Initialized MedSAM2 adapter (encoder={self.network.encoder_name})")
         else:
@@ -398,7 +407,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
     def initialize_optimizer_and_scheduler(self):
         assert self.network is not None, "self.initialize_network must be called first"
         if self.network_type in ("medsam2", "sam2"):
-            self.optimizer = torch.optim.AdamW(self.network.parameters(), lr=1e-4, weight_decay=self.weight_decay)
+            self.optimizer = torch.optim.AdamW(self.network.parameters(), lr=self.initial_lr, weight_decay=self.weight_decay)
         else:
             self.optimizer = torch.optim.SGD(self.network.parameters(), self.initial_lr, weight_decay=self.weight_decay,
                                              momentum=0.99, nesterov=True)
@@ -1147,17 +1156,18 @@ class nnUNetTrainerV2(nnUNetTrainer):
             self.print_to_log_file("This epoch took %f s\n" % (epoch_end_time - epoch_start_time))
 
             ##### write tensorboard ######
-            self.writer.add_scalars('loss',{'train':self.all_tr_losses[-1],"val":self.all_val_losses[-1]}, self.epoch)
-            # record train dice
-            val_tensor_anatomy = {'train':self.all_train_eval_metrics_ana[-1]}
-            val_tensor_anatomy.update({'val_'+j: self.all_val_eval_metrics_ana[j][-1] for j in self.all_val_eval_metrics_ana})
-            val_tensor_anatomy.update({'avg':self.val_eval_criterion_MA['ana'],'both':self.val_eval_criterion_MA['both']})
-            val_tensor_abnormal = {"train":self.all_train_eval_metrics_ab[-1]}
-            val_tensor_abnormal.update({'val_'+j: self.all_val_eval_metrics_ab[j][-1] for j in self.all_val_eval_metrics_ab})
-            val_tensor_abnormal.update({'avg':self.val_eval_criterion_MA['ab'],'both':self.val_eval_criterion_MA['both']})
-            
-            self.writer.add_scalars('dice/abnormal',val_tensor_abnormal, self.epoch)
-            self.writer.add_scalars('dice/anatomy',val_tensor_anatomy, self.epoch)
+            if self.writer is not None:
+                self.writer.add_scalars('loss',{'train':self.all_tr_losses[-1],"val":self.all_val_losses[-1]}, self.epoch)
+                # record train dice
+                val_tensor_anatomy = {'train':self.all_train_eval_metrics_ana[-1]}
+                val_tensor_anatomy.update({'val_'+j: self.all_val_eval_metrics_ana[j][-1] for j in self.all_val_eval_metrics_ana})
+                val_tensor_anatomy.update({'avg':self.val_eval_criterion_MA['ana'],'both':self.val_eval_criterion_MA['both']})
+                val_tensor_abnormal = {"train":self.all_train_eval_metrics_ab[-1]}
+                val_tensor_abnormal.update({'val_'+j: self.all_val_eval_metrics_ab[j][-1] for j in self.all_val_eval_metrics_ab})
+                val_tensor_abnormal.update({'avg':self.val_eval_criterion_MA['ab'],'both':self.val_eval_criterion_MA['both']})
+
+                self.writer.add_scalars('dice/abnormal',val_tensor_abnormal, self.epoch)
+                self.writer.add_scalars('dice/anatomy',val_tensor_anatomy, self.epoch)
 
         self.epoch -= 1  # if we don't do this we can get a problem with loading model_final_checkpoint.
 

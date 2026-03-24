@@ -363,7 +363,23 @@ class NetworkTrainer(object):
                 if 'amp_grad_scaler' in checkpoint.keys():
                     self.amp_grad_scaler.load_state_dict(checkpoint['amp_grad_scaler'])
 
-        self.network.load_state_dict(new_state_dict)
+        try:
+            self.network.load_state_dict(new_state_dict)
+        except RuntimeError as e:
+            err_msg = str(e)
+            legacy_share_key_mismatch = (
+                "Missing key(s) in state_dict" in err_msg
+                and "conv_blocks_context_e" in err_msg
+                and "Unexpected key(s) in state_dict" not in err_msg
+            )
+            if legacy_share_key_mismatch and not train:
+                self.print_to_log_file(
+                    "Compatibility fallback: loading legacy shared-encoder checkpoint with strict=False "
+                    "(missing conv_blocks_context_e keys)."
+                )
+                self.network.load_state_dict(new_state_dict, strict=False)
+            else:
+                raise
         self.epoch = checkpoint['epoch']
         if train:
             optimizer_state_dict = checkpoint['optimizer_state_dict']

@@ -14,6 +14,8 @@ parser.add_argument('--eval_mode', required=False,default='region_segtool', help
 
 args = parser.parse_args()
 
+os.makedirs(args.out_dir, exist_ok=True)
+
 config = {
     'llm_folder':args.llm_folder,
     'seg_folder':args.seg_folder,

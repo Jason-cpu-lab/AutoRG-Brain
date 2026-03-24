@@ -22,6 +22,7 @@ SCRIPT_DIR = Path(__file__).parent.absolute()
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 MODAL_KEYS = ["DWI", "T1WI", "T2WI", "T2FLAIR", "ADC"]
+REQUIRED_ANA_ROOT = Path("/home/jason/autorg/inference_output/T1_priority").resolve()
 
 
 def empty_ds_stats():
@@ -95,6 +96,7 @@ def build_pseudo_maps(pseudo_roots):
     for root in pseudo_roots:
         if not root.exists():
             continue
+        root_resolved = root.resolve()
         for p in root.rglob("*"):
             if not p.is_file():
                 continue
@@ -120,13 +122,19 @@ def build_pseudo_maps(pseudo_roots):
                     if case_id:
                         ab_by_modal_case[file_modal].setdefault(case_id, str(p))
             if "_ana_mask" in nm or nm.endswith("_ana.nii.gz") or nm.endswith("_ana.nii"):
-                ana_by_norm.setdefault(key, str(p))
-                if file_modal in ana_by_modal:
-                    ana_by_modal[file_modal].setdefault(key, str(p))
-                    ana_stem = strip_ana_suffix(stem)
-                    ana_exact_by_modal[file_modal].setdefault(ana_stem, str(p))
-                    if case_id:
-                        ana_by_modal_case[file_modal].setdefault(case_id, str(p))
+                # Enforce anatomy masks only from the curated T1_priority pseudo root.
+                try:
+                    is_allowed_ana_root = root_resolved == REQUIRED_ANA_ROOT or REQUIRED_ANA_ROOT in root_resolved.parents
+                except Exception:
+                    is_allowed_ana_root = False
+                if is_allowed_ana_root:
+                    ana_by_norm.setdefault(key, str(p))
+                    if file_modal in ana_by_modal:
+                        ana_by_modal[file_modal].setdefault(key, str(p))
+                        ana_stem = strip_ana_suffix(stem)
+                        ana_exact_by_modal[file_modal].setdefault(ana_stem, str(p))
+                        if case_id:
+                            ana_by_modal_case[file_modal].setdefault(case_id, str(p))
 
     return ab_by_norm, ana_by_norm, ab_by_modal, ana_by_modal, ana_exact_by_modal, ab_by_modal_case, ana_by_modal_case
 
@@ -374,26 +382,20 @@ def build_entries(data_root: Path, pseudo_roots):
                         label2 = ab_map_by_modal_case[modal][case_id]
                         break
 
-        # label1 (anatomy): local ana first, then pseudo fallback
-        label1 = None
-        label1_source = None
-        for c in [
-            img.parent / f"{stem}_ana_mask.nii.gz",
-            img.parent / f"{stem}_ana.nii.gz",
-            img.parent / f"{stem}_ana_mask.nii",
-            img.parent / f"{stem}_ana.nii",
-        ]:
-            if c.exists():
-                label1 = str(c)
-                label1_source = "local"
-                break
-        if label1 is None:
-            # Strict rule for label1:
-            # only accept ana masks whose basename exactly matches image stem,
-            # i.e., <image_stem>_ana_mask.nii.gz (or _ana.nii.gz legacy).
-            label1 = ana_exact_by_modal.get(modal, {}).get(stem)
-            if label1 is not None:
-                label1_source = "pseudo"
+        # label1 (anatomy): strictly from T1_priority pseudo masks only.
+        # only accept ana masks whose basename exactly matches image stem,
+        # i.e., <image_stem>_ana_mask.nii.gz (or _ana.nii.gz legacy).
+        label1 = ana_exact_by_modal.get(modal, {}).get(stem)
+        label1_source = "pseudo" if label1 is not None else None
+        if label1 is not None:
+            try:
+                label1_resolved = Path(label1).resolve()
+                if not (label1_resolved == REQUIRED_ANA_ROOT or REQUIRED_ANA_ROOT in label1_resolved.parents):
+                    label1 = None
+                    label1_source = None
+            except Exception:
+                label1 = None
+                label1_source = None
 
         if label1 is None:
             stats["excluded_missing_label1"] += 1

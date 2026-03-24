@@ -58,7 +58,10 @@ class AutoRG_Brain():
 
         self.trainer.load_checkpoint_ram(params[0], False)
         # load_pretrained_weights(self.trainer.network, config['seg_pretrained'])
-        load_pretrained_weights(self.trainer.network, join(config['seg_folder'],config['seg_chk']+'.model'))
+        try:
+            load_pretrained_weights(self.trainer.network, join(config['seg_folder'],config['seg_chk']+'.model'))
+        except RuntimeError as e:
+            print(f"Warning: skip loading SEG pretrained weights into RG network due to incompatibility: {e}")
         self.num_threads_preprocessing = 6
         self.step_size = 0.5
         self.mixed_precision = True

@@ -8,3 +8,4 @@ preprocessed_data/
 raw_data/nnUNet_cropped_data/
 trained_model_output/
 inference_output/
+raw_data/nnUNet_raw_data/infer_jobs
