@@ -1,0 +1,36 @@
+using model stored in  /home/jason/autorg/AutoRG-Brain/trained_model_output/nnUNet/3d_fullres/Task001_seg_test/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0
+before 1 1
+left 1 1
+emptying cuda cache
+init AutoRG_Brain_SEG model
+2026-03-25 03:24:26.729794: Initialized MedSAM2 adapter (encoder=medsam2)
+using the following model files:  ['/home/jason/autorg/AutoRG-Brain/trained_model_output/nnUNet/3d_fullres/Task001_seg_test/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_latest.model']
+starting preprocessing generator
+starting prediction...
+len list of lists 1 0
+preprocessing /home/jason/autorg/AutoRG-Brain/inference_output/medsam2_phase1/T1/P1_T1_T1.nii.gz
+before crop: (1, 182, 218, 182) after crop: (1, 154, 183, 147) spacing: [1. 1. 1.] 
+
+no resampling necessary
+no resampling necessary
+before: {'spacing': array([1., 1., 1.]), 'spacing_transposed': array([1., 1., 1.]), 'data.shape (data is transposed)': (1, 154, 183, 147)} 
+after:  {'spacing': array([1., 1., 1.]), 'data.shape (data is resampled)': (1, 154, 183, 147)} 
+
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+no resampling necessary
+force_separate_z: None interpolation order: 1
+no resampling necessary
+predicting /home/jason/autorg/AutoRG-Brain/inference_output/medsam2_phase1/T1/P1_T1_T1.nii.gz
+debug: mirroring False mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: False
+data shape: (1, 154, 183, 147)
+patch size: [128 128 128]
+steps (x, y, and z): [[0, 26], [0, 55], [0, 19]]
+number of tiles: 8
+computing Gaussian
+done
+prediction done
+inference done. Now waiting for the segmentation export to finish...
+avg metric not computed (no ground-truth labels in test file)

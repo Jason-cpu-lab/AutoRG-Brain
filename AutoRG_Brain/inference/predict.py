@@ -242,7 +242,7 @@ def predict_cases(model, output_folder, list_of_lists, list_of_segs, output_file
         # load the params of the network
         trainer.load_checkpoint_ram(params[0], False)
         
-        do_tta = False
+        # Use the do_tta parameter passed to predict_cases, don't force False
 
         softmaxs = trainer.predict_preprocessed_data_return_seg_and_softmax(
             d, do_mirroring=do_tta, mirror_axes=trainer.data_aug_params['mirror_axes'], use_sliding_window=True,
@@ -254,13 +254,16 @@ def predict_cases(model, output_folder, list_of_lists, list_of_segs, output_file
         # if fold is a int then len(params) == 1, the below code won't run
         for p in params[1:]:
             trainer.load_checkpoint_ram(p, False)
-            softmax += trainer.predict_preprocessed_data_return_seg_and_softmax(
+            softmaxs_fold = trainer.predict_preprocessed_data_return_seg_and_softmax(
                 d, do_mirroring=do_tta, mirror_axes=trainer.data_aug_params['mirror_axes'], use_sliding_window=True,
                 step_size=step_size, use_gaussian=True, all_in_gpu=all_in_gpu,
-                mixed_precision=mixed_precision, modal=modal)[1]
+                mixed_precision=mixed_precision, modal=modal)
+            softmax_abnormal += softmaxs_fold[1]
+            softmax_anatomy += softmaxs_fold[3]
         # if fold is a int then len(params) == 1, the below code won't run
         if len(params) > 1:
-            softmax /= len(params)
+            softmax_abnormal /= len(params)
+            softmax_anatomy /= len(params)
 
         # softmax_transpose.shape = num_classes, 144, 174, 138
         transpose_forward = trainer.plans.get('transpose_forward')
@@ -500,10 +503,11 @@ def predict_from_folder(model: str, output_folder: str, test_file: str,
     if list_of_segs is not None:
         assert len(output_files) == len(list_of_segs)
 
-    if save_output_nii:
+    # Initialize output lists at function scope to avoid UnboundLocalError
+    left_output_files, left_list_of_lists = [], []
+    left_list_of_segs = [] if list_of_segs is not None else None
 
-        left_output_files, left_list_of_lists = [], []
-        left_list_of_segs = [] if list_of_segs is not None else None
+    if save_output_nii:
 
         for idx in range(len(output_files)):
 

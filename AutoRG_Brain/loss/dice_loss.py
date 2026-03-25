@@ -90,20 +90,52 @@ class SoftDiceLoss(nn.Module):
     def forward(self, x, y, loss_mask=None):
         shp_x = x.shape
 
-        if self.batch_dice:
-            axes = [0] + list(range(2, len(shp_x)))
-        else:
-            axes = list(range(2, len(shp_x)))
-
         if self.apply_nonlin is not None:
             x = self.apply_nonlin(x)
 
-        tp, fp, fn, _ = get_tp_fp_fn_tn(x, y, axes, loss_mask, False)
+        if len(shp_x) != len(y.shape):
+            y = y.view((y.shape[0], 1, *y.shape[1:]))
 
-        nominator = 2 * tp + self.smooth
-        denominator = 2 * tp + fp + fn + self.smooth
+        if all([i == j for i, j in zip(x.shape, y.shape)]):
+            target = torch.argmax(y, dim=1).long()
+        else:
+            target = y[:, 0].long()
 
-        dc = nominator / (denominator + 1e-8)
+        if loss_mask is not None:
+            mask = loss_mask[:, 0].to(dtype=x.dtype)
+        else:
+            mask = None
+
+        tp_per_class = []
+        denom_per_class = []
+
+        for class_idx in range(shp_x[1]):
+            class_prob = x[:, class_idx]
+            class_target = (target == class_idx).to(dtype=x.dtype)
+            spatial_axes = tuple(range(1, len(class_prob.shape)))
+
+            if mask is not None:
+                class_prob = class_prob * mask
+                class_target = class_target * mask
+
+            if self.batch_dice:
+                tp_class = (class_prob * class_target).sum()
+                denominator_class = class_prob.sum() + class_target.sum()
+            else:
+                tp_class = (class_prob * class_target).sum(dim=spatial_axes)
+                denominator_class = class_prob.sum(dim=spatial_axes) + class_target.sum(dim=spatial_axes)
+
+            tp_per_class.append(tp_class)
+            denom_per_class.append(denominator_class)
+
+        if self.batch_dice:
+            tp = torch.stack(tp_per_class, dim=0)
+            denominator = torch.stack(denom_per_class, dim=0)
+        else:
+            tp = torch.stack(tp_per_class, dim=1)
+            denominator = torch.stack(denom_per_class, dim=1)
+
+        dc = (2 * tp + self.smooth) / (denominator + self.smooth + 1e-8)
 
         if not self.do_bg: # choose this, ignore background loss
             if self.batch_dice:
@@ -147,10 +179,8 @@ class SoftDiceLossSquared(nn.Module):
                 y_onehot = y
             else:
                 y = y.long()
-                y_onehot = torch.zeros(shp_x)
-                if x.device.type == "cuda":
-                    y_onehot = y_onehot.cuda(x.device.index)
-                y_onehot.scatter_(1, y, 1).float()
+                y_onehot = torch.zeros(shp_x, device=x.device, dtype=x.dtype)
+                y_onehot.scatter_(1, y, 1.0)
 
         intersect = x * y_onehot
         # values in the denominator get smoothed

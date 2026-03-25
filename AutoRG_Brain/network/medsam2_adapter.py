@@ -123,11 +123,24 @@ class MedSAM2SegAdapter(SegmentationNetwork):
 
                 self.medsam2_enabled = True
                 self.encoder_name = "medsam2"
-            except Exception:
+            except ImportError as e:
                 self.medsam2_model = None
                 self.medsam2_enabled = False
                 self.encoder_name = "fallback_3d"
-                self.medsam2_load_error = "failed_to_build_sam2"
+                self.medsam2_load_error = f"import_error: {str(e)}"
+                print(f"WARNING: MedSAM2 import failed: {e}. Using fallback 3D encoder.")
+            except FileNotFoundError as e:
+                self.medsam2_model = None
+                self.medsam2_enabled = False
+                self.encoder_name = "fallback_3d"
+                self.medsam2_load_error = f"file_not_found: {str(e)}"
+                print(f"WARNING: MedSAM2 checkpoint or config not found: {e}. Using fallback 3D encoder.")
+            except Exception as e:
+                self.medsam2_model = None
+                self.medsam2_enabled = False
+                self.encoder_name = "fallback_3d"
+                self.medsam2_load_error = f"unknown_error: {str(e)}"
+                print(f"WARNING: MedSAM2 initialization failed with unexpected error: {e}. Using fallback 3D encoder.")
 
         self._build_decoder_from_autorg(max_num_features=max_num_features)
         self._build_encoder_bridge()
@@ -236,6 +249,16 @@ class MedSAM2SegAdapter(SegmentationNetwork):
 
     def _forward_medsam2_features(self, x: torch.Tensor) -> torch.Tensor:
         batch_size, _, depth, height, width = x.shape
+        
+        # Ensure MedSAM2 model device matches input device
+        if self.medsam2_model is not None:
+            medsam2_device = next(self.medsam2_model.parameters()).device
+            if x.device != medsam2_device:
+                raise RuntimeError(
+                    f"Input tensor device {x.device} does not match MedSAM2 model device {medsam2_device}. "
+                    f"Please move input to the same device as the model."
+                )
+        
         x2d = x.permute(0, 2, 1, 3, 4).reshape(batch_size * depth, x.shape[1], height, width)
         x2d = self.input_proj_2d(x2d)
 

@@ -634,14 +634,14 @@ class SegmentationNetwork(NeuralNetwork):
                 pred_ana = self.inference_apply_nonlin(pred_ana)
                 pred_ab = self.inference_apply_nonlin(pred_ab)
                 result_torch_abnormal += 1 / num_results * torch.flip(pred_ab, (3, 2))
-                result_torch_anatomy += 1 / num_results * torch.flip(pred_ana, (4, 2))
+                result_torch_anatomy += 1 / num_results * torch.flip(pred_ana, (3, 2))
 
             if m == 7 and (0 in mirror_axes) and (1 in mirror_axes) and (2 in mirror_axes):
                 pred_ana, pred_ab = self(torch.flip(x, (4, 3, 2)), modal=modal)
                 pred_ana = self.inference_apply_nonlin(pred_ana)
                 pred_ab = self.inference_apply_nonlin(pred_ab)
                 result_torch_abnormal += 1 / num_results * torch.flip(pred_ab, (4, 3, 2))
-                result_torch_anatomy += 1 / num_results * torch.flip(pred_ana, (4, 2))
+                result_torch_anatomy += 1 / num_results * torch.flip(pred_ana, (4, 3, 2))
 
         if mult is not None:
             result_torch_abnormal[:, :] *= mult

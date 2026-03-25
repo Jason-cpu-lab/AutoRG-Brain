@@ -1,6 +1,6 @@
 [
   {
-    "image": "/home/jason/autorg/dataset/BraTS-MEN-Train/BraTS-MEN-00008-000/BraTS-MEN-00008-000-t2f.nii",
-    "modal": "T2FLAIR"
+    "image": "/home/jason/autorg/dataset/MSLesSeg Dataset/train/P1/T1/P1_T1_T1.nii.gz",
+    "modal": "T1"
   }
 ]

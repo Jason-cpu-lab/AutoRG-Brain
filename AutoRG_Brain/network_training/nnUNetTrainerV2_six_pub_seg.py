@@ -144,7 +144,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
             self.best_val_eval_criterion_MA_ab = {i:None for i in self.all_val_eval_metrics_ab}
             self.best_val_eval_criterion_MA = {'ab':None,'ana':None,'both':None}
 
-        self.val_every = 10
+        self.val_every = 1
         val_choose_path = Path(__file__).resolve().parents[1] / 'utils_file' / 'val_choose_number.json'
         self.val_choose_num = json.load(open(val_choose_path, 'r'))
 
@@ -175,7 +175,82 @@ class nnUNetTrainerV2(nnUNetTrainer):
             
         self.num_batches_per_epoch = num_batches_per_epoch # 250
         self.num_val_batches_per_epoch = num_val_batches_per_epoch # 50
-        self.save_every = 100
+        self.save_every = 2
+
+    @staticmethod
+    def _tensor_tree_is_finite(x):
+        if isinstance(x, (tuple, list)):
+            return all(nnUNetTrainerV2._tensor_tree_is_finite(i) for i in x)
+        if torch.is_tensor(x):
+            return bool(torch.isfinite(x).all().item())
+        return True
+
+    @staticmethod
+    def _finite_mean(values, fallback=0.0):
+        if len(values) == 0:
+            return float(fallback)
+        arr = np.asarray(values, dtype=np.float32)
+        arr = arr[np.isfinite(arr)]
+        if arr.size == 0:
+            return float(fallback)
+        return float(arr.mean())
+
+    def _grads_are_finite(self):
+        for p in self.network.parameters():
+            if p.grad is not None and (not torch.isfinite(p.grad).all().item()):
+                return False
+        return True
+
+    def _check_case_has_non_finite(self, case_id, case_info):
+        data_file = case_info['data_file']
+        npy_file = data_file[:-4] + ".npy"
+        source_file = npy_file if isfile(npy_file) else data_file
+
+        try:
+            if source_file.endswith('.npy'):
+                arr = np.load(source_file, mmap_mode='r')
+            else:
+                arr = np.load(source_file)['data']
+        except Exception as e:
+            return True, f"{case_id} (read_error: {e})"
+
+        if not np.isfinite(arr).all():
+            return True, f"{case_id} ({os.path.basename(source_file)})"
+        return False, None
+
+    def run_dataset_preflight_scan(self):
+        if self.dataset_directory_bucket is not None:
+            self.print_to_log_file("Skipping local NaN/Inf preflight scan because dataset is on bucket storage.")
+            return
+
+        train_cases = list(self.dataset_tr.items()) if self.dataset_tr is not None else []
+        val_cases = list(self.dataset_val.items()) if self.dataset_val is not None else []
+
+        self.print_to_log_file(
+            f"Running dataset preflight scan for NaN/Inf (train={len(train_cases)}, val={len(val_cases)}) ...")
+
+        bad_train = []
+        for case_id, case_info in train_cases:
+            has_bad, reason = self._check_case_has_non_finite(case_id, case_info)
+            if has_bad:
+                bad_train.append(reason)
+
+        bad_val = []
+        for case_id, case_info in val_cases:
+            has_bad, reason = self._check_case_has_non_finite(case_id, case_info)
+            if has_bad:
+                bad_val.append(reason)
+
+        if len(bad_train) == 0 and len(bad_val) == 0:
+            self.print_to_log_file("Preflight scan passed: no NaN/Inf voxels detected in train/val data files.")
+            return
+
+        self.print_to_log_file(
+            f"WARNING: Preflight scan found non-finite voxels. train_bad={len(bad_train)}, val_bad={len(bad_val)}")
+        if len(bad_train) > 0:
+            self.print_to_log_file("Bad TRAIN cases:\n  " + "\n  ".join(bad_train))
+        if len(bad_val) > 0:
+            self.print_to_log_file("Bad VAL cases:\n  " + "\n  ".join(bad_val))
 
     def load_dataset(self):
         # load 1000 data maximumly
@@ -318,6 +393,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
                                        also_print_to_console=False)
                 self.print_to_log_file("VALIDATION KEYS:\n %s" % (str(self.dataset_val.keys())),
                                        also_print_to_console=False)
+                self.run_dataset_preflight_scan()
             else:
                 pass
 
@@ -946,11 +1022,9 @@ class nnUNetTrainerV2(nnUNetTrainer):
         self.maybe_update_lr()
 
         if self.epoch % self.val_every == 0:
-
-            self.maybe_save_checkpoint()
-
+            if self.epoch % self.save_every == 0:
+                self.maybe_save_checkpoint()
             self.update_eval_criterion_MA_six_pub()
-
             self.manage_patience_six_pub()
 
         continue_training = self.epoch < self.max_num_epochs
@@ -998,17 +1072,42 @@ class nnUNetTrainerV2(nnUNetTrainer):
             target_anatomy = to_cuda(target_anatomy)
             target_abnormal = to_cuda(target_abnormal)
 
+        if not self._tensor_tree_is_finite(data):
+            self.print_to_log_file("WARNING: non-finite input data detected. Sanitizing with torch.nan_to_num and continuing.")
+            data = torch.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
+
+        if not self._tensor_tree_is_finite(target_anatomy) or not self._tensor_tree_is_finite(target_abnormal):
+            self.print_to_log_file("WARNING: non-finite target detected. Skipping this batch.")
+            self.optimizer.zero_grad()
+            return None
+
         self.optimizer.zero_grad()
 
         if self.fp16:
             with autocast(device_type='cuda', enabled=torch.cuda.is_available()):
                 output_anatomy, output_abnormal = self.network(data, modal)
                 del data
+                if (not self._tensor_tree_is_finite(output_anatomy)) or (not self._tensor_tree_is_finite(output_abnormal)):
+                    self.print_to_log_file("WARNING: non-finite network output detected. Skipping this batch.")
+                    self.optimizer.zero_grad()
+                    return None
                 l = self.loss(output_anatomy, target_anatomy) if self.only_ana else self.loss(output_anatomy, target_anatomy) + self.loss(output_abnormal, target_abnormal)  
+
+            if not torch.isfinite(l).all().item():
+                self.print_to_log_file("WARNING: non-finite loss detected. Skipping optimizer step for this batch.")
+                self.optimizer.zero_grad()
+                return None
 
             if do_backprop:
                 self.amp_grad_scaler.scale(l).backward()
                 self.amp_grad_scaler.unscale_(self.optimizer)
+
+                if not self._grads_are_finite():
+                    self.print_to_log_file("WARNING: non-finite gradients detected (fp16). Skipping optimizer step for this batch.")
+                    self.optimizer.zero_grad()
+                    self.amp_grad_scaler.update()
+                    return None
+
                 torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
                 self.amp_grad_scaler.step(self.optimizer)
                 self.amp_grad_scaler.update()
@@ -1016,21 +1115,37 @@ class nnUNetTrainerV2(nnUNetTrainer):
             output_anatomy, output_abnormal = self.network(data, modal)
             del data
 
+            if (not self._tensor_tree_is_finite(output_anatomy)) or (not self._tensor_tree_is_finite(output_abnormal)):
+                self.print_to_log_file("WARNING: non-finite network output detected. Skipping this batch.")
+                self.optimizer.zero_grad()
+                return None
+
             l = self.loss(output_anatomy, target_anatomy) if self.only_ana else self.loss(output_anatomy, target_anatomy) + self.loss(output_abnormal, target_abnormal)
+
+            if not torch.isfinite(l).all().item():
+                self.print_to_log_file("WARNING: non-finite loss detected. Skipping optimizer step for this batch.")
+                self.optimizer.zero_grad()
+                return None
 
             if do_backprop:
                 l.backward()
+
+                if not self._grads_are_finite():
+                    self.print_to_log_file("WARNING: non-finite gradients detected. Skipping optimizer step for this batch.")
+                    self.optimizer.zero_grad()
+                    return None
+
                 torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
                 self.optimizer.step()
 
-        if run_online_evaluation:
+        if run_online_evaluation and self._tensor_tree_is_finite(output_anatomy) and self._tensor_tree_is_finite(output_abnormal):
             self.run_online_evaluation(output_anatomy, target_anatomy, mode="ana")
             self.run_online_evaluation(output_abnormal, target_abnormal, mode="ab")
 
         del target_abnormal
         del target_anatomy
 
-        return l.detach().cpu().numpy()
+        return float(l.detach().cpu().numpy())
 
     def run_training(self):
         """
@@ -1084,15 +1199,19 @@ class nnUNetTrainerV2(nnUNetTrainer):
 
                         # do_backdrop and run_online_evaluation
                         l = self.run_iteration(self.tr_gen, True, True)
-
-                        tbar.set_postfix(loss=l)
-                        train_losses_epoch.append(l)
+                        if l is not None:
+                            tbar.set_postfix(loss=l)
+                            train_losses_epoch.append(l)
+                        else:
+                            tbar.set_postfix(loss="skipped")
             else:
                 for _ in range(self.num_batches_per_epoch):
                     l = self.run_iteration(self.tr_gen, True, True)
-                    train_losses_epoch.append(l)
+                    if l is not None:
+                        train_losses_epoch.append(l)
 
-            self.all_tr_losses.append(np.mean(train_losses_epoch))
+            tr_fallback = self.all_tr_losses[-1] if len(self.all_tr_losses) > 0 else 0.0
+            self.all_tr_losses.append(self._finite_mean(train_losses_epoch, fallback=tr_fallback))
             self.print_to_log_file("train loss : %.4f" % self.all_tr_losses[-1])
 
             ### this reset the online evaluation values so that it won't mess with 
@@ -1115,8 +1234,10 @@ class nnUNetTrainerV2(nnUNetTrainer):
                     val_losses = []
                     for b in range(self.num_val_batches_per_epoch):
                         l = self.run_iteration(self.val_gen, False, True)
-                        val_losses.append(l)
-                    self.all_val_losses.append(np.mean(val_losses))
+                        if l is not None:
+                            val_losses.append(l)
+                    val_fallback = self.all_val_losses[-1] if len(self.all_val_losses) > 0 else self.all_tr_losses[-1]
+                    self.all_val_losses.append(self._finite_mean(val_losses, fallback=val_fallback))
                     self.print_to_log_file("validation loss: %.4f" % self.all_val_losses[-1])
                     self.finish_online_evaluation(mode="val")
 
