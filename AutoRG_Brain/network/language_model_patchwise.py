@@ -207,7 +207,7 @@ class LanguageModel(nn.Module):
 
     def __init__(self, img_patch_num, max_tokens=1024):
         super().__init__()
-        self.checkpoint = "healx/gpt-2-pubmed-medium"
+        self.checkpoint = "/home/jason/models/healx-gpt-2-pubmed-medium"
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.bos_token_id = 50256
         self.eos_token_id = 50256

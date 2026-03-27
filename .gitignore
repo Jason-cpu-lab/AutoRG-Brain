@@ -3,3 +3,4 @@ preprocessed_data/
 train_model_output/
 assets/
 logs/ 
+*.pyc
